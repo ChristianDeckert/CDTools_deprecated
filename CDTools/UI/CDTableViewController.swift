@@ -117,8 +117,8 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
 /// - Embedded tableModel and controller will drastically improve implementation speeds
 /// - Type safety data
 /// - Automatically returns number of sections/rows by implementing UITableViewtableModel / UITableViewDelegate
-//public class CDTableViewController<T: Equatable>: XRBaseViewController, UITableViewtableModel, UITableViewDelegate,
-public class CDTableViewController: XRBaseViewController, UITableViewDataSource, UITableViewDelegate,
+//public class CDTableViewController<T: Equatable>: CDBaseViewController, UITableViewtableModel, UITableViewDelegate,
+public class CDTableViewController: CDBaseViewController, UITableViewDataSource, UITableViewDelegate,
 UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTableControllertableModel {
     
     public var selectedBackgroundViewEnabled: Bool = true

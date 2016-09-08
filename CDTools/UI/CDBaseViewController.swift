@@ -26,7 +26,7 @@ public extension UIViewController {
     }
 }
 
-public class XRBaseViewController: UIViewController {
+public class CDBaseViewController: UIViewController {
 
     public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
