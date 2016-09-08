@@ -1,5 +1,5 @@
 //
-//  XRDispatch.swift
+//  CDDispatch.swift
 //  QualiFood
 //
 //  Created by Christian Deckert on 28.06.16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum XRDispatchQueue {
+public enum CDDispatchQueue {
     case PriorityMainThread
     case PriorityHigh
     case PriorityDefault
@@ -62,12 +62,12 @@ public class DispatchQueue: NSObject {
     static var results: [DispatchResult] = [DispatchResult]()
     private var q: dispatch_queue_t?
     private var preferredDelay: Double? = 0
-    private var preferredQueue: XRDispatchQueue?
+    private var preferredQueue: CDDispatchQueue?
     
     deinit {    
     }
     
-    public init(preferredQueue queue: XRDispatchQueue? = .PriorityMainThread, preferredDelay: Double? = 0) {
+    public init(preferredQueue queue: CDDispatchQueue? = .PriorityMainThread, preferredDelay: Double? = 0) {
         self.preferredQueue = queue
         self.preferredDelay = preferredDelay
     }
@@ -120,23 +120,23 @@ public class DispatchQueue: NSObject {
             finalDelay = preferredDelay
         }
         
-        XRDispatch.dispatchOnQueue(queue: q, dispatchBlock: dispatchBlock, delay: finalDelay) {
+        CDDispatch.dispatchOnQueue(queue: q, dispatchBlock: dispatchBlock, delay: finalDelay) {
             completion?(successful: true)
         }
     }
     
 }
 
-public class XRDispatch {
+public class CDDispatch {
     
     /// Dispatch closure after given delay on main thread
     public class func onMainQueueAfter(delay: Double, block dispatchBlock: dispatch_block_t, completion: (Void -> Void)? = nil) {
-        XRDispatch.dispatchOnQueue(queue: dispatch_get_main_queue(), dispatchBlock: dispatchBlock, delay: delay)
+        CDDispatch.dispatchOnQueue(queue: dispatch_get_main_queue(), dispatchBlock: dispatchBlock, delay: delay)
     }
     
     /// Dispatch closure after given delay on background thread
     public class func onBackgroundQueueAfter(delay: Double, block dispatchBlock: dispatch_block_t, completion: (Void -> Void)? = nil) {
-        XRDispatch.dispatchOnQueue(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), dispatchBlock: dispatchBlock, delay: delay)
+        CDDispatch.dispatchOnQueue(queue: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), dispatchBlock: dispatchBlock, delay: delay)
     }
     
     public class func dispatchOnQueue(queue q: dispatch_queue_t, dispatchBlock: dispatch_block_t, delay: Double, completion: (Void -> Void)? = nil) {
@@ -145,7 +145,7 @@ public class XRDispatch {
         dispatch_after(time, q, dispatchBlock)
         
         if let completion = completion {
-            XRDispatch.dispatchOnQueue(queue: dispatch_get_main_queue(), dispatchBlock: completion, delay: delay + 0.01)
+            CDDispatch.dispatchOnQueue(queue: dispatch_get_main_queue(), dispatchBlock: completion, delay: delay + 0.01)
         }
     }
     

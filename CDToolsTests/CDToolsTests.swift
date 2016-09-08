@@ -21,9 +21,16 @@ class CDToolsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDispatch() {
+
+        DispatchQueue(preferredQueue: .PriorityBackground, preferredDelay: 0.4).dispatch {
+            print("do work")
+            
+            }.then { successful in
+                print("done")
+        }
+        
+        XCTAssert(true)
     }
     
     func testPerformanceExample() {
