@@ -29,9 +29,6 @@
 		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
 		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
 		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
-		28A796C11D815AF400907327 /* CDTools.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 28A796C01D815AF400907327 /* CDTools.podspec */; };
-		28A796C41D815C2500907327 /* LICENCE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28A796C21D815C2500907327 /* LICENCE.txt */; };
-		28A796C51D815C2500907327 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 28A796C31D815C2500907327 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,9 +264,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A796C41D815C2500907327 /* LICENCE.txt in Resources */,
 				28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */,
-				28A796C11D815AF400907327 /* CDTools.podspec in Resources */,
 				28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +289,6 @@
 				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
 				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
-				28A796C51D815C2500907327 /* README.md in Sources */,
 				28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */,
 				28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */,
 				28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */,
