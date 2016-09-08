@@ -10,7 +10,7 @@ s.license = { :type => "MIT", :file => "CDTools/LICENSE" }
 s.author = { "Christian Deckert" => "Christian.Deckert@icloud.com" }
 s.homepage = "https://github.com/ChristianDeckert/CDTools"
 #s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :tag => "#{s.version}"}
-s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :commit => "d673f6f1f0aaffd0c1c8061eb1cdec1b1db34cd0" }
+s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :commit => "09285da0bdd09b25c7bb3585848c65934be7f2c8" }
 
 s.default_subspec = 'Default'
 
