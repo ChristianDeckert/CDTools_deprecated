@@ -29,6 +29,9 @@
 		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
 		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
 		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
+		28A796C11D815AF400907327 /* CDTools.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 28A796C01D815AF400907327 /* CDTools.podspec */; };
+		28A796C41D815C2500907327 /* LICENCE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28A796C21D815C2500907327 /* LICENCE.txt */; };
+		28A796C51D815C2500907327 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 28A796C31D815C2500907327 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		28A796B91D81567E00907327 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CustomControls/CDSpinnerView.xib; sourceTree = "<group>"; };
 		28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CustomControls/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
 		28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+CDTools.swift"; path = "UI/UIStoryboard+CDTools.swift"; sourceTree = "<group>"; };
+		28A796C01D815AF400907327 /* CDTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CDTools.podspec; sourceTree = "<group>"; };
+		28A796C21D815C2500907327 /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
+		28A796C31D815C2500907327 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,9 @@
 		2814298D1D8151FE00F48404 = {
 			isa = PBXGroup;
 			children = (
+				28A796C21D815C2500907327 /* LICENCE.txt */,
+				28A796C31D815C2500907327 /* README.md */,
+				28A796C01D815AF400907327 /* CDTools.podspec */,
 				281429991D8151FE00F48404 /* CDTools */,
 				281429A51D8151FE00F48404 /* CDToolsTests */,
 				281429981D8151FE00F48404 /* Products */,
@@ -258,7 +267,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A796C41D815C2500907327 /* LICENCE.txt in Resources */,
 				28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */,
+				28A796C11D815AF400907327 /* CDTools.podspec in Resources */,
 				28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +294,7 @@
 				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
 				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
+				28A796C51D815C2500907327 /* README.md in Sources */,
 				28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */,
 				28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */,
 				28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */,
