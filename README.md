@@ -32,3 +32,23 @@
 - NSLayoutConstraint+CDTools
 - UIApplication+CDTools
 - UIView+CDTools
+
+## How to
+
+- gem install cocoapods
+- pod init
+```
+platform :ios, '9.0'
+
+source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/ChristianDeckert/Specs.git'
+
+target '<YOUR_TARGET>' do
+
+  use_frameworks!
+  pod 'CDTools', '~> 1.0'
+
+end
+
+```
+- pod install
