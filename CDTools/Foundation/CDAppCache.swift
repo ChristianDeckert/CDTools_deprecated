@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 // MARK: - XRAppCache: a simple singelton to cache and persist stuff 
 
