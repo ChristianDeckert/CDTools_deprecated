@@ -21,6 +21,8 @@ s.default_subspec = 'Default'
 s.subspec 'Default' do |ss|
 
 ss.framework = "UIKit"
+ss.framework = "Foundation"
+
 ss.ios.deployment_target = '9.0'
 ss.source_files = "CDTools/**/*.{swift}"
 ss.resources = "CDTools/**/*.{png,jpeg,jpg,storyboard,xib}"

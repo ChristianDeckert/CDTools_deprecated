@@ -29,6 +29,8 @@
 		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
 		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
 		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
+		28A796E61D81624200907327 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A796E41D81624200907327 /* Foundation.framework */; };
+		28A796E71D81624200907327 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A796E51D81624200907327 /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		28A796C01D815AF400907327 /* CDTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CDTools.podspec; sourceTree = "<group>"; };
 		28A796C21D815C2500907327 /* LICENCE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE.txt; sourceTree = "<group>"; };
 		28A796C31D815C2500907327 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		28A796E41D81624200907327 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		28A796E51D81624200907327 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A796E61D81624200907327 /* Foundation.framework in Frameworks */,
+				28A796E71D81624200907327 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +105,7 @@
 				28A796C01D815AF400907327 /* CDTools.podspec */,
 				281429991D8151FE00F48404 /* CDTools */,
 				281429A51D8151FE00F48404 /* CDToolsTests */,
+				28A796E81D81626400907327 /* Frameworks */,
 				281429981D8151FE00F48404 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,6 +178,15 @@
 				28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */,
 			);
 			name = CustomControls;
+			sourceTree = "<group>";
+		};
+		28A796E81D81626400907327 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28A796E41D81624200907327 /* Foundation.framework */,
+				28A796E51D81624200907327 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
