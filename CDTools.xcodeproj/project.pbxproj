@@ -29,7 +29,7 @@
 		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
 		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
 		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
-		28A796F01D816D5700907327 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 28A796EF1D816D5700907327 /* LICENSE.txt */; };
+		28A796F21D817F3100907327 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 28A796F11D817F3100907327 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,7 @@
 		28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+CDTools.swift"; path = "UI/UIStoryboard+CDTools.swift"; sourceTree = "<group>"; };
 		28A796C01D815AF400907327 /* CDTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CDTools.podspec; sourceTree = "<group>"; };
 		28A796C31D815C2500907327 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		28A796EF1D816D5700907327 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		28A796F11D817F3100907327 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +95,7 @@
 		2814298D1D8151FE00F48404 = {
 			isa = PBXGroup;
 			children = (
-				28A796EF1D816D5700907327 /* LICENSE.txt */,
+				28A796F11D817F3100907327 /* LICENSE */,
 				28A796C31D815C2500907327 /* README.md */,
 				28A796C01D815AF400907327 /* CDTools.podspec */,
 				281429991D8151FE00F48404 /* CDTools */,
@@ -273,7 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28A796F01D816D5700907327 /* LICENSE.txt in Resources */,
+				28A796F21D817F3100907327 /* LICENSE in Resources */,
 				28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */,
 				28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */,
 			);
