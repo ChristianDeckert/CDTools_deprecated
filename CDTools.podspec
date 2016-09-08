@@ -17,7 +17,7 @@ s.default_subspec = 'Default'
 
   s.subspec 'Default' do |ss|
 
-    ss.frameworks = 'UIKit', 'Foundation'
+    #ss.frameworks = 'UIKit', 'Foundation'
     ss.source_files = "CDTools/**/*.{swift}", "CDTools/Foundation/**/*.*", "CDTools/UI/**/*.*"
     ss.resource_bundles = {
       "CDToolsResources" => ["CDTools/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"]
