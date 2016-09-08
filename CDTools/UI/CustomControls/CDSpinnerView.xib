@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CDSpinnerView" customModule="CDTools" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SoT-Ae-JlL">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kg4-yR-2mW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eO8-fc-dmv">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="a1b-az-1uW">
+                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="light"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <blurEffect style="extraLight"/>
+                </visualEffectView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d0c-9v-XwN">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="Cvq-y4-pxe"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="Awg-ot-NrY"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="d0c-9v-XwN" secondAttribute="bottom" id="6Lx-Qx-0di"/>
+                <constraint firstItem="d0c-9v-XwN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7bp-QZ-aOX"/>
+                <constraint firstItem="d0c-9v-XwN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WPW-vq-f3n"/>
+                <constraint firstItem="SoT-Ae-JlL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zie-xp-zhl"/>
+                <constraint firstItem="SoT-Ae-JlL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="o1n-Lf-Xeq"/>
+                <constraint firstAttribute="bottom" secondItem="SoT-Ae-JlL" secondAttribute="bottom" id="rHz-BA-nMn"/>
+                <constraint firstAttribute="trailing" secondItem="d0c-9v-XwN" secondAttribute="trailing" id="ud2-L5-dgk"/>
+                <constraint firstAttribute="trailing" secondItem="SoT-Ae-JlL" secondAttribute="trailing" id="xNy-Bh-Wp5"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="d0c-9v-XwN" id="50Z-WK-Qgu"/>
+                <outlet property="visualEffectView" destination="SoT-Ae-JlL" id="AA1-VZ-xWc"/>
+            </connections>
+        </view>
+    </objects>
+</document>

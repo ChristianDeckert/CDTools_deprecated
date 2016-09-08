@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2814299B1D8151FE00F48404 /* CDTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 2814299A1D8151FE00F48404 /* CDTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		281429A21D8151FE00F48404 /* CDTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281429971D8151FE00F48404 /* CDTools.framework */; };
+		281429A71D8151FE00F48404 /* CDToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281429A61D8151FE00F48404 /* CDToolsTests.swift */; };
+		28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796921D8155AA00907327 /* CDBaseViewController.swift */; };
+		28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796931D8155AA00907327 /* CDTableViewCell.swift */; };
+		28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796941D8155AA00907327 /* CDTableViewController.swift */; };
+		28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796951D8155AA00907327 /* CDTableViewTableModel.swift */; };
+		28A7969D1D8155AA00907327 /* NSLayoutConstraint+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796961D8155AA00907327 /* NSLayoutConstraint+CDTools.swift */; };
+		28A7969E1D8155AA00907327 /* UIApplication+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796971D8155AA00907327 /* UIApplication+CDTools.swift */; };
+		28A7969F1D8155AA00907327 /* UIView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796981D8155AA00907327 /* UIView+CDTools.swift */; };
+		28A796A91D8155BC00907327 /* Array+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A11D8155BC00907327 /* Array+CDTools.swift */; };
+		28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A21D8155BC00907327 /* CDAppCache.swift */; };
+		28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A31D8155BC00907327 /* CDDispatch.swift */; };
+		28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A41D8155BC00907327 /* CDRegEx.swift */; };
+		28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A61D8155BC00907327 /* NSURL+CDTools.swift */; };
+		28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A71D8155BC00907327 /* String+CDTools.swift */; };
+		28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A81D8155BC00907327 /* UUID+CDTools.swift */; };
+		28A796B51D81567100907327 /* CDKeyboardAwareTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */; };
+		28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796B81D81567E00907327 /* CDSpinnerView.swift */; };
+		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
+		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
+		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		281429A31D8151FE00F48404 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2814298E1D8151FE00F48404 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 281429961D8151FE00F48404;
+			remoteInfo = CDTools;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		281429971D8151FE00F48404 /* CDTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CDTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2814299A1D8151FE00F48404 /* CDTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDTools.h; sourceTree = "<group>"; };
+		2814299C1D8151FE00F48404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		281429A11D8151FE00F48404 /* CDToolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CDToolsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		281429A61D8151FE00F48404 /* CDToolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDToolsTests.swift; sourceTree = "<group>"; };
+		281429A81D8151FE00F48404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28A796921D8155AA00907327 /* CDBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDBaseViewController.swift; path = UI/CDBaseViewController.swift; sourceTree = "<group>"; };
+		28A796931D8155AA00907327 /* CDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewCell.swift; path = UI/CDTableViewCell.swift; sourceTree = "<group>"; };
+		28A796941D8155AA00907327 /* CDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewController.swift; path = UI/CDTableViewController.swift; sourceTree = "<group>"; };
+		28A796951D8155AA00907327 /* CDTableViewTableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewTableModel.swift; path = UI/CDTableViewTableModel.swift; sourceTree = "<group>"; };
+		28A796961D8155AA00907327 /* NSLayoutConstraint+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+CDTools.swift"; path = "UI/NSLayoutConstraint+CDTools.swift"; sourceTree = "<group>"; };
+		28A796971D8155AA00907327 /* UIApplication+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIApplication+CDTools.swift"; path = "UI/UIApplication+CDTools.swift"; sourceTree = "<group>"; };
+		28A796981D8155AA00907327 /* UIView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+CDTools.swift"; path = "UI/UIView+CDTools.swift"; sourceTree = "<group>"; };
+		28A796A11D8155BC00907327 /* Array+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+CDTools.swift"; path = "Foundation/Array+CDTools.swift"; sourceTree = "<group>"; };
+		28A796A21D8155BC00907327 /* CDAppCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAppCache.swift; path = Foundation/CDAppCache.swift; sourceTree = "<group>"; };
+		28A796A31D8155BC00907327 /* CDDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDDispatch.swift; path = Foundation/CDDispatch.swift; sourceTree = "<group>"; };
+		28A796A41D8155BC00907327 /* CDRegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDRegEx.swift; path = Foundation/CDRegEx.swift; sourceTree = "<group>"; };
+		28A796A61D8155BC00907327 /* NSURL+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURL+CDTools.swift"; path = "Foundation/NSURL+CDTools.swift"; sourceTree = "<group>"; };
+		28A796A71D8155BC00907327 /* String+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+CDTools.swift"; path = "Foundation/String+CDTools.swift"; sourceTree = "<group>"; };
+		28A796A81D8155BC00907327 /* UUID+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UUID+CDTools.swift"; path = "Foundation/UUID+CDTools.swift"; sourceTree = "<group>"; };
+		28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDKeyboardAwareTextfield.swift; path = UI/CDKeyboardAwareTextfield.swift; sourceTree = "<group>"; };
+		28A796B81D81567E00907327 /* CDSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDSpinnerView.swift; path = UI/CustomControls/CDSpinnerView.swift; sourceTree = "<group>"; };
+		28A796B91D81567E00907327 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CustomControls/CDSpinnerView.xib; sourceTree = "<group>"; };
+		28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CustomControls/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
+		28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+CDTools.swift"; path = "UI/UIStoryboard+CDTools.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		281429931D8151FE00F48404 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2814299E1D8151FE00F48404 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281429A21D8151FE00F48404 /* CDTools.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2814298D1D8151FE00F48404 = {
+			isa = PBXGroup;
+			children = (
+				281429991D8151FE00F48404 /* CDTools */,
+				281429A51D8151FE00F48404 /* CDToolsTests */,
+				281429981D8151FE00F48404 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		281429981D8151FE00F48404 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				281429971D8151FE00F48404 /* CDTools.framework */,
+				281429A11D8151FE00F48404 /* CDToolsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		281429991D8151FE00F48404 /* CDTools */ = {
+			isa = PBXGroup;
+			children = (
+				28A796911D8155A000907327 /* UI */,
+				28A796A01D8155B200907327 /* Foundation */,
+				2814299A1D8151FE00F48404 /* CDTools.h */,
+				2814299C1D8151FE00F48404 /* Info.plist */,
+			);
+			path = CDTools;
+			sourceTree = "<group>";
+		};
+		281429A51D8151FE00F48404 /* CDToolsTests */ = {
+			isa = PBXGroup;
+			children = (
+				281429A61D8151FE00F48404 /* CDToolsTests.swift */,
+				281429A81D8151FE00F48404 /* Info.plist */,
+			);
+			path = CDToolsTests;
+			sourceTree = "<group>";
+		};
+		28A796911D8155A000907327 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */,
+				28A796B71D81567400907327 /* CustomControls */,
+				28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */,
+				28A796921D8155AA00907327 /* CDBaseViewController.swift */,
+				28A796931D8155AA00907327 /* CDTableViewCell.swift */,
+				28A796941D8155AA00907327 /* CDTableViewController.swift */,
+				28A796951D8155AA00907327 /* CDTableViewTableModel.swift */,
+				28A796961D8155AA00907327 /* NSLayoutConstraint+CDTools.swift */,
+				28A796971D8155AA00907327 /* UIApplication+CDTools.swift */,
+				28A796981D8155AA00907327 /* UIView+CDTools.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		28A796A01D8155B200907327 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				28A796A11D8155BC00907327 /* Array+CDTools.swift */,
+				28A796A21D8155BC00907327 /* CDAppCache.swift */,
+				28A796A31D8155BC00907327 /* CDDispatch.swift */,
+				28A796A41D8155BC00907327 /* CDRegEx.swift */,
+				28A796A61D8155BC00907327 /* NSURL+CDTools.swift */,
+				28A796A71D8155BC00907327 /* String+CDTools.swift */,
+				28A796A81D8155BC00907327 /* UUID+CDTools.swift */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
+		28A796B71D81567400907327 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				28A796B81D81567E00907327 /* CDSpinnerView.swift */,
+				28A796B91D81567E00907327 /* CDSpinnerView.xib */,
+				28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */,
+			);
+			name = CustomControls;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		281429941D8151FE00F48404 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2814299B1D8151FE00F48404 /* CDTools.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		281429961D8151FE00F48404 /* CDTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281429AB1D8151FE00F48404 /* Build configuration list for PBXNativeTarget "CDTools" */;
+			buildPhases = (
+				281429921D8151FE00F48404 /* Sources */,
+				281429931D8151FE00F48404 /* Frameworks */,
+				281429941D8151FE00F48404 /* Headers */,
+				281429951D8151FE00F48404 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CDTools;
+			productName = CDTools;
+			productReference = 281429971D8151FE00F48404 /* CDTools.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		281429A01D8151FE00F48404 /* CDToolsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 281429AE1D8151FE00F48404 /* Build configuration list for PBXNativeTarget "CDToolsTests" */;
+			buildPhases = (
+				2814299D1D8151FE00F48404 /* Sources */,
+				2814299E1D8151FE00F48404 /* Frameworks */,
+				2814299F1D8151FE00F48404 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				281429A41D8151FE00F48404 /* PBXTargetDependency */,
+			);
+			name = CDToolsTests;
+			productName = CDToolsTests;
+			productReference = 281429A11D8151FE00F48404 /* CDToolsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2814298E1D8151FE00F48404 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Christian Deckert";
+				TargetAttributes = {
+					281429961D8151FE00F48404 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					281429A01D8151FE00F48404 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 281429911D8151FE00F48404 /* Build configuration list for PBXProject "CDTools" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2814298D1D8151FE00F48404;
+			productRefGroup = 281429981D8151FE00F48404 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				281429961D8151FE00F48404 /* CDTools */,
+				281429A01D8151FE00F48404 /* CDToolsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		281429951D8151FE00F48404 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */,
+				28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2814299F1D8151FE00F48404 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		281429921D8151FE00F48404 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28A796A91D8155BC00907327 /* Array+CDTools.swift in Sources */,
+				28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */,
+				28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */,
+				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
+				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
+				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
+				28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */,
+				28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */,
+				28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */,
+				28A7969E1D8155AA00907327 /* UIApplication+CDTools.swift in Sources */,
+				28A7969F1D8155AA00907327 /* UIView+CDTools.swift in Sources */,
+				28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */,
+				28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */,
+				28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */,
+				28A796B51D81567100907327 /* CDKeyboardAwareTextfield.swift in Sources */,
+				28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */,
+				28A7969D1D8155AA00907327 /* NSLayoutConstraint+CDTools.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2814299D1D8151FE00F48404 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				281429A71D8151FE00F48404 /* CDToolsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		281429A41D8151FE00F48404 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 281429961D8151FE00F48404 /* CDTools */;
+			targetProxy = 281429A31D8151FE00F48404 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		281429A91D8151FE00F48404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		281429AA1D8151FE00F48404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		281429AC1D8151FE00F48404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CDTools/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		281429AD1D8151FE00F48404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CDTools/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		281429AF1D8151FE00F48404 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CDToolsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		281429B01D8151FE00F48404 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CDToolsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		281429911D8151FE00F48404 /* Build configuration list for PBXProject "CDTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281429A91D8151FE00F48404 /* Debug */,
+				281429AA1D8151FE00F48404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281429AB1D8151FE00F48404 /* Build configuration list for PBXNativeTarget "CDTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281429AC1D8151FE00F48404 /* Debug */,
+				281429AD1D8151FE00F48404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		281429AE1D8151FE00F48404 /* Build configuration list for PBXNativeTarget "CDToolsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				281429AF1D8151FE00F48404 /* Debug */,
+				281429B01D8151FE00F48404 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2814298E1D8151FE00F48404 /* Project object */;
+}
