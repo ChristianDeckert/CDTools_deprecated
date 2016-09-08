@@ -9,7 +9,8 @@ s.version = "1.0.1"
 s.license = { :type => "MIT", :file => "CDTools/LICENSE" }
 s.author = { "Christian Deckert" => "Christian.Deckert@icloud.com" }
 s.homepage = "https://github.com/ChristianDeckert/CDTools"
-s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "master", :tag => "#{s.version}"}
+s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "master" }
+#s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "master", :tag => "#{s.version}"}
 #s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :commit => "09285da0bdd09b25c7bb3585848c65934be7f2c8" }
 
 s.default_subspec = 'Default'
@@ -17,7 +18,7 @@ s.default_subspec = 'Default'
   s.subspec 'Default' do |ss|
 
     ss.frameworks = 'UIKit', 'Foundation'
-    ss.source_files = "CDTools/**/*.{swift}"
+    ss.source_files = "CDTools/**/*.{swift}", "CDTools/Foundation/**/*.*", "CDTools/UI/**/*.*"
     ss.resource_bundles = {
       "CDToolsResources" => ["CDTools/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"]
     }
