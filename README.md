@@ -55,6 +55,7 @@ target '<YOUR_TARGET>' do
 
   use_frameworks!
   pod 'CDTools', '~> 1.0' #Swift 2.2
+  pod 'CDTools', '~> 1.5' #Swift 2.3 (work in progress)
 
 end
 
