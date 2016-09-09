@@ -18,7 +18,7 @@ public extension UIImage {
             let info = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue)
             if let context: CGContextRef = CGBitmapContextCreate(rgba, 1, 1, 8, 4, colorSpace, info.rawValue) {
             
-                CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage)
+                CGContextDrawImage(context, CGRectMake(0, 0, 1, 1), self.CGImage!)
                 
                 if rgba[3] > 0 {
                     

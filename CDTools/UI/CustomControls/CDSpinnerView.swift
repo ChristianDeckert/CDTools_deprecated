@@ -143,7 +143,7 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
             return nil
         }
         let bundle = NSBundle(forClass: CDSpinnerView.classForCoder())
-        if let spinnerView: CDSpinnerView = bundle.loadNibNamed("CDSpinnerView", owner: nil, options: nil).first as? CDSpinnerView {
+        if let spinnerView: CDSpinnerView = bundle.loadNibNamed("CDSpinnerView", owner: nil, options: nil)!.first as? CDSpinnerView {
             spinnerView.callback = block
             spinnerView.items = items
             spinnerView.alpha = 0
