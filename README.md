@@ -7,10 +7,10 @@
 
 - CDSpinnerView
 - CDKeyboardAwareTextfield 
+- CDCircularProgressView
 
 #### Foundation
-- CDAppCache
-- CDRegEx
+
 - DispatchQueue (wrapper for gcd)
 ```swift
    DispatchQueue(preferredQueue: .PriorityBackground, preferredDelay: 0.4).dispatch {
@@ -20,18 +20,26 @@
    }
 ```
 - Array+CDTools
+- CDAppCache
+- CDRegEx
+- CDFileManager
 - NSURL+CDTools
 - String+CDTools
 - UUID+CDTools
 
 #### UI
 
-- CDTableViewController (Table Model abstraction)
+- CDBaseViewController
+- CDTableViewController (Table model / datasource abstraction)
 - CDTableViewCell
-- UIStoryboard+CDTools
 - NSLayoutConstraint+CDTools
 - UIApplication+CDTools
+- UIColor+CDTools
+- UIImage+CDTools
+- UIImageView+CDTools
+- UIStoryboard+CDTools
 - UIView+CDTools
+- UIViewController+CDTools
 
 ## How to
 
@@ -46,7 +54,7 @@ source 'https://github.com/ChristianDeckert/Specs.git'
 target '<YOUR_TARGET>' do
 
   use_frameworks!
-  pod 'CDTools', '~> 1.0'
+  pod 'CDTools', '~> 1.0' #Swift 2.2
 
 end
 
