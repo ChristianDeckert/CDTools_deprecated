@@ -1,5 +1,5 @@
 //
-//  XRKeyboardAwareTextfield.swift
+//  CDKeyboardAwareTextfield.swift
 //  CDTools
 //
 //  Created by Christian Deckert on 30.08.16.

@@ -1,5 +1,5 @@
 //
-//  XRAppCache.swift
+//  CDAppCache.swift
 //  AdlerMannheimFanApp
 //
 //  Created by Christian Deckert on 06.07.16.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-// MARK: - XRAppCache: a simple singelton to cache and persist stuff 
+// MARK: - CDAppCache: a simple singelton to cache and persist stuff 
 
 public typealias WatchAppCacheObserverCallback = (object: AnyObject?, key: String) -> Void
 
-let _appCacheInstance = XRAppCache()
-public class XRAppCache {
+let _appCacheInstance = CDAppCache()
+public class CDAppCache {
     
     private var cache = Dictionary<String, AnyObject>()
     public var suitName: String? = nil {
@@ -28,7 +28,7 @@ public class XRAppCache {
     
     public var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
     
-    public static func sharedCache() -> XRAppCache {
+    public static func sharedCache() -> CDAppCache {
         return _appCacheInstance
     }
     
@@ -150,7 +150,7 @@ public class XRAppCache {
 }
 
 
-public extension XRAppCache {
+public extension CDAppCache {
 
     
     public func persistObject(objectToPersist object: AnyObject, forKey key: String) {

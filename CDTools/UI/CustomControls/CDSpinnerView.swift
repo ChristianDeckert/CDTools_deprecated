@@ -1,5 +1,5 @@
 //
-//  XRSpinnerView.swift
+//  CDSpinnerView.swift
 //  AdlerMannheimFanApp
 //
 //  Created by Christian Deckert on 30.08.16.

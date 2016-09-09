@@ -1,6 +1,6 @@
 //
 //  CDTableViewTableModel.swift
-//  TXExternus
+//  
 //
 //  Created by Christian Deckert on 21.10.16.
 //  Copyright (c) 2014 Christian Deckert GmbH. All rights reserved.

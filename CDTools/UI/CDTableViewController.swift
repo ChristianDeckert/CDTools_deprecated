@@ -1,6 +1,6 @@
 //
 //  CDTableViewController.swift
-//  TXExternus
+//  
 //
 //  Created by Christian Deckert on 22.10.16.
 //  Copyright (c) 2014 Christian Deckert GmbH. All rights reserved.
@@ -27,10 +27,10 @@ public protocol CDTableControllertableModel: NSObjectProtocol {
 
 public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     
-    weak var xrTableControllertableModel: CDTableControllertableModel?
+    weak var cdTableControllertableModel: CDTableControllertableModel?
     var tableView: UITableView? {
         get {
-            return self.xrTableControllertableModel?.CDTableControllerGetTableView()
+            return self.cdTableControllertableModel?.CDTableControllerGetTableView()
         }
     }
     
@@ -39,7 +39,7 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     weak var weakTableViewController: CDTableViewController? //STRONG TABLEVIEW TO BE DEFINED IN SUBCLASSES
     
     public init(CDTableControllertableModel tableModel: CDTableControllertableModel?) {
-        self.xrTableControllertableModel = tableModel
+        self.cdTableControllertableModel = tableModel
         super.init()
         commontInit()
     }
@@ -86,11 +86,11 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     }
     
     public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let xrCell = cell as? CDTableViewCell else {
+        guard let cdCell = cell as? CDTableViewCell else {
             return
         }
         
-        xrCell.indexPath = indexPath
+        cdCell.indexPath = indexPath
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -123,10 +123,10 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     
     public var selectedBackgroundViewEnabled: Bool = true
     public var selectedBackgroundViewColor = UIColor.whiteColor()
-    public var xrTableController = CDTableController<NSObject>(CDTableControllertableModel: nil)
+    public var cdTableController = CDTableController<NSObject>(CDTableControllertableModel: nil)
     public var tableModel: CDTableViewTableModel<NSObject> {
         get {
-            return self.xrTableController.tableModel
+            return self.cdTableController.tableModel
         }
     }
     
@@ -140,14 +140,14 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     
     public override func loadView() {
         super.loadView()
-        self.xrTableController.xrTableControllertableModel = self
+        self.cdTableController.cdTableControllertableModel = self
         findTableView()
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.xrTableController.weakTableViewController = self
+        self.cdTableController.weakTableViewController = self
         if let tv = self.weakTableView {
             tv.delegate = self
             tv.dataSource = self
@@ -215,27 +215,27 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     // MARK: - UITableViewDelegate & -tableModel
     
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.xrTableController.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        return self.cdTableController.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.xrTableController.tableView(tableView, numberOfRowsInSection: section)
+        return self.cdTableController.tableView(tableView, numberOfRowsInSection: section)
     }
     
     public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return self.xrTableController.numberOfSectionsInTableView(tableView)
+        return self.cdTableController.numberOfSectionsInTableView(tableView)
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return self.xrTableController.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        return self.cdTableController.tableView(tableView, cellForRowAtIndexPath: indexPath)
     }
     
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        self.self.xrTableController.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        self.self.cdTableController.tableView(tableView, didSelectRowAtIndexPath: indexPath)
         if self.selectedBackgroundViewEnabled {
-            self.self.xrTableController.hightlightSelectedBackgroundView(indexPath)
+            self.self.cdTableController.hightlightSelectedBackgroundView(indexPath)
         }
     }
     

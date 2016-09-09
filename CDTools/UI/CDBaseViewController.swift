@@ -41,7 +41,7 @@ public class CDBaseViewController: UIViewController {
         
     }
     
-    public func xr_addChildViewController(childController: UIViewController, frame: CGRect? = nil) -> Bool {
+    public func cd_addChildViewController(childController: UIViewController, frame: CGRect? = nil) -> Bool {
         for viewController in self.childViewControllers {
             if viewController == childController {
                 return false

@@ -1,5 +1,5 @@
 //
-//  XRRegEx.swift
+//  CDRegEx.swift
 //  CDTools
 //
 //  Created by Christian Deckert on 30.06.16.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum XRRegExPatterns: String {
+public enum CDRegExPatterns: String {
     case URLPattern = "(https?:\\/\\/(?:www\\.|(?!www))[^\\s\\.]+\\.[^\\s]{2,}|www\\.[^\\s]+\\.[^\\s]{2,})"
     case EmailPattern = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"
 }
 
-public class XRRegEx: NSObject {
+public class CDRegEx: NSObject {
     
     let internalExpression: NSRegularExpression?
     let pattern: String
@@ -24,7 +24,7 @@ public class XRRegEx: NSObject {
         super.init()
     }
     
-    public init(pattern: XRRegExPatterns) {
+    public init(pattern: CDRegExPatterns) {
         self.pattern = pattern.rawValue
         self.internalExpression = try? NSRegularExpression(pattern: self.pattern, options: NSRegularExpressionOptions.CaseInsensitive)
         super.init()
@@ -55,9 +55,9 @@ public class XRRegEx: NSObject {
 infix operator =~ {}
 
 public func =~ (input: String, pattern: String) -> Bool {
-    return XRRegEx(pattern: pattern).test(input)
+    return CDRegEx(pattern: pattern).test(input)
 }
 
-public func =~ (input: String, pattern: XRRegExPatterns) -> Bool {
-    return XRRegEx(pattern: pattern.rawValue).test(input)
+public func =~ (input: String, pattern: CDRegExPatterns) -> Bool {
+    return CDRegEx(pattern: pattern.rawValue).test(input)
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class XRUUID: NSObject {
+public class CDUUID: NSObject {
     
     public class func newUUID() -> String {
         let uuid = CFUUIDCreate(kCFAllocatorDefault)

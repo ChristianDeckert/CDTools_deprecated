@@ -1,8 +1,8 @@
 //
-//  UIStoryboard+XRCore.swift
-//  XRCore
+//  UIStoryboard+CDTools.swift
+//  CDTools
 //
-//  Created by admin on 30.06.16.
+//  Created by Christian Deckert on 30.06.16.
 //  Copyright © 2016 CocoaPods. All rights reserved.
 //
 
