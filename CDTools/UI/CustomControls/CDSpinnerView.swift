@@ -3,7 +3,7 @@
 //  AdlerMannheimFanApp
 //
 //  Created by Christian Deckert on 30.08.16.
-//  Copyright © 2016 Christian Deckert Software GmbH. All rights reserved.
+//  Copyright © 2016 Christian Deckert. All rights reserved.
 //
 
 import UIKit

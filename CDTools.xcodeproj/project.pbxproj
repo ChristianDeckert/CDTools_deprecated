@@ -16,6 +16,7 @@
 		2844EC031D82AFDE00A8F164 /* UIImage+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EBFF1D82AFDE00A8F164 /* UIImage+CDTools.swift */; };
 		2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC001D82AFDE00A8F164 /* UIImageView+CDTools.swift */; };
 		2844EC061D82AFF900A8F164 /* CDCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */; };
+		2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */; };
 		28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796921D8155AA00907327 /* CDBaseViewController.swift */; };
 		28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796931D8155AA00907327 /* CDTableViewCell.swift */; };
 		28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796941D8155AA00907327 /* CDTableViewController.swift */; };
@@ -30,7 +31,6 @@
 		28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A61D8155BC00907327 /* NSURL+CDTools.swift */; };
 		28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A71D8155BC00907327 /* String+CDTools.swift */; };
 		28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A81D8155BC00907327 /* UUID+CDTools.swift */; };
-		28A796B51D81567100907327 /* CDKeyboardAwareTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */; };
 		28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796B81D81567E00907327 /* CDSpinnerView.swift */; };
 		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
 		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
@@ -61,6 +61,7 @@
 		2844EBFF1D82AFDE00A8F164 /* UIImage+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+CDTools.swift"; path = "UI/UIImage+CDTools.swift"; sourceTree = "<group>"; };
 		2844EC001D82AFDE00A8F164 /* UIImageView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+CDTools.swift"; path = "UI/UIImageView+CDTools.swift"; sourceTree = "<group>"; };
 		2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDCircularProgressView.swift; path = UI/CustomControls/CDCircularProgressView.swift; sourceTree = "<group>"; };
+		2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDKeyboardAwareTextfield.swift; path = UI/CustomControls/CDKeyboardAwareTextfield.swift; sourceTree = "<group>"; };
 		28A796921D8155AA00907327 /* CDBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDBaseViewController.swift; path = UI/CDBaseViewController.swift; sourceTree = "<group>"; };
 		28A796931D8155AA00907327 /* CDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewCell.swift; path = UI/CDTableViewCell.swift; sourceTree = "<group>"; };
 		28A796941D8155AA00907327 /* CDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewController.swift; path = UI/CDTableViewController.swift; sourceTree = "<group>"; };
@@ -75,7 +76,6 @@
 		28A796A61D8155BC00907327 /* NSURL+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURL+CDTools.swift"; path = "Foundation/NSURL+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A71D8155BC00907327 /* String+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+CDTools.swift"; path = "Foundation/String+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A81D8155BC00907327 /* UUID+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UUID+CDTools.swift"; path = "Foundation/UUID+CDTools.swift"; sourceTree = "<group>"; };
-		28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDKeyboardAwareTextfield.swift; path = UI/CDKeyboardAwareTextfield.swift; sourceTree = "<group>"; };
 		28A796B81D81567E00907327 /* CDSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDSpinnerView.swift; path = UI/CustomControls/CDSpinnerView.swift; sourceTree = "<group>"; };
 		28A796B91D81567E00907327 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CustomControls/CDSpinnerView.xib; sourceTree = "<group>"; };
 		28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CustomControls/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
@@ -155,7 +155,6 @@
 				2844EC001D82AFDE00A8F164 /* UIImageView+CDTools.swift */,
 				28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */,
 				28A796B71D81567400907327 /* CustomControls */,
-				28A796B21D81567100907327 /* CDKeyboardAwareTextfield.swift */,
 				28A796921D8155AA00907327 /* CDBaseViewController.swift */,
 				28A796931D8155AA00907327 /* CDTableViewCell.swift */,
 				28A796941D8155AA00907327 /* CDTableViewController.swift */,
@@ -185,6 +184,7 @@
 		28A796B71D81567400907327 /* CustomControls */ = {
 			isa = PBXGroup;
 			children = (
+				2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */,
 				2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */,
 				28A796B81D81567E00907327 /* CDSpinnerView.swift */,
 				28A796B91D81567E00907327 /* CDSpinnerView.xib */,
@@ -313,6 +313,7 @@
 			files = (
 				28A796A91D8155BC00907327 /* Array+CDTools.swift in Sources */,
 				28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */,
+				2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */,
 				28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */,
 				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
@@ -330,7 +331,6 @@
 				2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */,
 				28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */,
 				28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */,
-				28A796B51D81567100907327 /* CDKeyboardAwareTextfield.swift in Sources */,
 				28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */,
 				2844EC031D82AFDE00A8F164 /* UIImage+CDTools.swift in Sources */,
 				28A7969D1D8155AA00907327 /* NSLayoutConstraint+CDTools.swift in Sources */,
