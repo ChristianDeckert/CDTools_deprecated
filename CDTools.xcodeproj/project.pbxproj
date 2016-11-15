@@ -17,6 +17,8 @@
 		2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC001D82AFDE00A8F164 /* UIImageView+CDTools.swift */; };
 		2844EC061D82AFF900A8F164 /* CDCircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */; };
 		2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */; };
+		284828131DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */; };
+		284828141DDB20FE001F4EDB /* CDAnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */; };
 		28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796921D8155AA00907327 /* CDBaseViewController.swift */; };
 		28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796931D8155AA00907327 /* CDTableViewCell.swift */; };
 		28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796941D8155AA00907327 /* CDTableViewController.swift */; };
@@ -62,6 +64,8 @@
 		2844EC001D82AFDE00A8F164 /* UIImageView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+CDTools.swift"; path = "UI/UIImageView+CDTools.swift"; sourceTree = "<group>"; };
 		2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDCircularProgressView.swift; path = UI/CustomControls/CDCircularProgressView.swift; sourceTree = "<group>"; };
 		2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDKeyboardAwareTextfield.swift; path = UI/CustomControls/CDKeyboardAwareTextfield.swift; sourceTree = "<group>"; };
+		284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAnimatedBarButtonItem.swift; path = UI/CDAnimatedBarButtonItem.swift; sourceTree = "<group>"; };
+		284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAnimatedButton.swift; path = UI/CDAnimatedButton.swift; sourceTree = "<group>"; };
 		28A796921D8155AA00907327 /* CDBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDBaseViewController.swift; path = UI/CDBaseViewController.swift; sourceTree = "<group>"; };
 		28A796931D8155AA00907327 /* CDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewCell.swift; path = UI/CDTableViewCell.swift; sourceTree = "<group>"; };
 		28A796941D8155AA00907327 /* CDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewController.swift; path = UI/CDTableViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,8 @@
 		28A796911D8155A000907327 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */,
+				284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */,
 				2844EBFD1D82AFDE00A8F164 /* UIColor+CDTools.swift */,
 				2844EBFE1D82AFDE00A8F164 /* UIViewController+CDTools.swift */,
 				2844EBFF1D82AFDE00A8F164 /* UIImage+CDTools.swift */,
@@ -331,7 +337,9 @@
 				28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */,
 				2844EC061D82AFF900A8F164 /* CDCircularProgressView.swift in Sources */,
 				2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */,
+				284828131DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift in Sources */,
 				28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */,
+				284828141DDB20FE001F4EDB /* CDAnimatedButton.swift in Sources */,
 				28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */,
 				28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */,
 				2844EC031D82AFDE00A8F164 /* UIImage+CDTools.swift in Sources */,
