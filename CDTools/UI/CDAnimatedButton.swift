@@ -9,9 +9,18 @@
 import Foundation
 import UIKit
 
-class CDAnimatedButton: UIButton {
+enum AnimatedButtonCallbackFireOptions: Int {
+    case AfterFirstHalf
+    case AfterSecondHalf
+}
+
+class AnimatedButton: UIButton {
     
-    var onTapCallback: ((animatedButton: CDAnimatedButton?) -> Void)?
+    var onTapCallback: ((animatedButton: AnimatedButton?) -> Void)?
+    var preferredShrinkedSize: CGSize = CGSize(width: 0.95, height: 0.95)
+    var customAnimationsFirstHalf: (Void -> Void)?
+    var customAnimationsSecondHalf: (Void -> Void)?
+    var callbackFireOptions: AnimatedButtonCallbackFireOptions = .AfterFirstHalf
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -20,26 +29,7 @@ class CDAnimatedButton: UIButton {
             return
         }
         
-        func onTap(sender: AnyObject?) {
-            
-            self.userInteractionEnabled = false
-            
-            let duration: Double = 0.3
-            
-            UIView.animateWithDuration(duration/2, animations: {
-                self.transform = CGAffineTransformMakeScale(0.95, 0.95)
-                
-            }) { complete in
-                
-                self.onTapCallback?(animatedButton: self)
-                
-                UIView.animateWithDuration(duration/2, animations: {
-                    self.transform = CGAffineTransformIdentity
-                }) { complete in
-                    self.userInteractionEnabled = true
-                }
-            }
-        }
+        self.addTarget(self, action: #selector(onTap(_:)), forControlEvents: .TouchUpInside)
     }
     
     func onTap(sender: AnyObject?) {
@@ -49,20 +39,30 @@ class CDAnimatedButton: UIButton {
         let duration: Double = 0.3
         
         UIView.animateWithDuration(duration/2, animations: {
-            self.transform = CGAffineTransformMakeScale(0.95, 0.95)
+            self.transform = CGAffineTransformMakeScale(self.preferredShrinkedSize.width, self.preferredShrinkedSize.height)
+            self.customAnimationsFirstHalf?()
             
         }) { complete in
             
-            self.onTapCallback?(animatedButton: self)
+            if self.callbackFireOptions == .AfterFirstHalf {
+                self.onTapCallback?(animatedButton: self)
+            }
             
             UIView.animateWithDuration(duration/2, animations: {
                 self.transform = CGAffineTransformIdentity
+                self.customAnimationsSecondHalf?()
+                
             }) { complete in
                 self.userInteractionEnabled = true
+                if self.callbackFireOptions == .AfterSecondHalf {
+                    self.onTapCallback?(animatedButton: self)
+                }
             }
         }
     }
     
 }
+
+
 
 
