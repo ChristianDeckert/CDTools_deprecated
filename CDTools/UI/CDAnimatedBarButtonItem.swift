@@ -302,4 +302,14 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
             }
         }
     }
+    
+    public func updateImage(newImage image: UIImage?) {
+        guard let customView = (self.customView as? UIButton)?.subviews.first as? UIImageView else {
+            return
+        }
+        UIView.transitionWithView(customView, duration: 0.4, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            customView.image = image
+        }, completion: nil)
+        
+    }
 }

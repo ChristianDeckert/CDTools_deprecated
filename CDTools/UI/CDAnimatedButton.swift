@@ -124,6 +124,15 @@ public class CDAnimatedButton: UIButton {
         }
     }
     
+    public func updateImage(newImage image: UIImage?) {
+        guard let customView = self.subviews.first as? UIImageView else {
+            return
+        }
+        UIView.transitionWithView(customView, duration: 0.4, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+            customView.image = image
+        }, completion: nil)
+        
+    }
 }
 
 

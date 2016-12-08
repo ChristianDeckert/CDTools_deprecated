@@ -19,6 +19,10 @@
 		2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */; };
 		284828131DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */; };
 		284828141DDB20FE001F4EDB /* CDAnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */; };
+		286BFD671DF9507500055CF5 /* CDSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BFD631DF9507500055CF5 /* CDSpinnerView.swift */; };
+		286BFD681DF9507500055CF5 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */; };
+		286BFD691DF9507500055CF5 /* CDSpinnerView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */; };
+		286BFD6A1DF9507500055CF5 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286BFD661DF9507500055CF5 /* CDSpinnerView.xib */; };
 		28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796921D8155AA00907327 /* CDBaseViewController.swift */; };
 		28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796931D8155AA00907327 /* CDTableViewCell.swift */; };
 		28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796941D8155AA00907327 /* CDTableViewController.swift */; };
@@ -33,9 +37,6 @@
 		28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A61D8155BC00907327 /* NSURL+CDTools.swift */; };
 		28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A71D8155BC00907327 /* String+CDTools.swift */; };
 		28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A81D8155BC00907327 /* UUID+CDTools.swift */; };
-		28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796B81D81567E00907327 /* CDSpinnerView.swift */; };
-		28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796B91D81567E00907327 /* CDSpinnerView.xib */; };
-		28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */; };
 		28A796BF1D81587400907327 /* UIStoryboard+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */; };
 		28A796F21D817F3100907327 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 28A796F11D817F3100907327 /* LICENSE */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,10 @@
 		2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDKeyboardAwareTextfield.swift; path = UI/CustomControls/CDKeyboardAwareTextfield.swift; sourceTree = "<group>"; };
 		284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAnimatedBarButtonItem.swift; path = UI/CDAnimatedBarButtonItem.swift; sourceTree = "<group>"; };
 		284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAnimatedButton.swift; path = UI/CDAnimatedButton.swift; sourceTree = "<group>"; };
+		286BFD631DF9507500055CF5 /* CDSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDSpinnerView.swift; path = UI/CDSpinnerView.swift; sourceTree = "<group>"; };
+		286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
+		286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDSpinnerView+CDTools.swift"; path = "UI/CDSpinnerView+CDTools.swift"; sourceTree = "<group>"; };
+		286BFD661DF9507500055CF5 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CDSpinnerView.xib; sourceTree = "<group>"; };
 		28A796921D8155AA00907327 /* CDBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDBaseViewController.swift; path = UI/CDBaseViewController.swift; sourceTree = "<group>"; };
 		28A796931D8155AA00907327 /* CDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewCell.swift; path = UI/CDTableViewCell.swift; sourceTree = "<group>"; };
 		28A796941D8155AA00907327 /* CDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewController.swift; path = UI/CDTableViewController.swift; sourceTree = "<group>"; };
@@ -80,9 +85,6 @@
 		28A796A61D8155BC00907327 /* NSURL+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURL+CDTools.swift"; path = "Foundation/NSURL+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A71D8155BC00907327 /* String+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+CDTools.swift"; path = "Foundation/String+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A81D8155BC00907327 /* UUID+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UUID+CDTools.swift"; path = "Foundation/UUID+CDTools.swift"; sourceTree = "<group>"; };
-		28A796B81D81567E00907327 /* CDSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDSpinnerView.swift; path = UI/CustomControls/CDSpinnerView.swift; sourceTree = "<group>"; };
-		28A796B91D81567E00907327 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CustomControls/CDSpinnerView.xib; sourceTree = "<group>"; };
-		28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CustomControls/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
 		28A796BE1D81587400907327 /* UIStoryboard+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIStoryboard+CDTools.swift"; path = "UI/UIStoryboard+CDTools.swift"; sourceTree = "<group>"; };
 		28A796C01D815AF400907327 /* CDTools.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CDTools.podspec; sourceTree = "<group>"; };
 		28A796C31D815C2500907327 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -153,6 +155,10 @@
 		28A796911D8155A000907327 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				286BFD631DF9507500055CF5 /* CDSpinnerView.swift */,
+				286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */,
+				286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */,
+				286BFD661DF9507500055CF5 /* CDSpinnerView.xib */,
 				284828111DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift */,
 				284828121DDB20FE001F4EDB /* CDAnimatedButton.swift */,
 				2844EBFD1D82AFDE00A8F164 /* UIColor+CDTools.swift */,
@@ -192,9 +198,6 @@
 			children = (
 				2844EC0B1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift */,
 				2844EC051D82AFF900A8F164 /* CDCircularProgressView.swift */,
-				28A796B81D81567E00907327 /* CDSpinnerView.swift */,
-				28A796B91D81567E00907327 /* CDSpinnerView.xib */,
-				28A796BA1D81567E00907327 /* CDSpinnerViewCell.xib */,
 			);
 			name = CustomControls;
 			sourceTree = "<group>";
@@ -263,7 +266,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Christian Deckert";
 				TargetAttributes = {
 					281429961D8151FE00F48404 = {
@@ -300,8 +303,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28A796F21D817F3100907327 /* LICENSE in Resources */,
-				28A796BC1D81567E00907327 /* CDSpinnerView.xib in Resources */,
-				28A796BD1D81567E00907327 /* CDSpinnerViewCell.xib in Resources */,
+				286BFD681DF9507500055CF5 /* CDSpinnerViewCell.xib in Resources */,
+				286BFD6A1DF9507500055CF5 /* CDSpinnerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +327,7 @@
 				2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */,
 				28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */,
 				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
+				286BFD691DF9507500055CF5 /* CDSpinnerView+CDTools.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
 				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
 				2844EC011D82AFDE00A8F164 /* UIColor+CDTools.swift in Sources */,
@@ -331,10 +335,10 @@
 				28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */,
 				2844EC021D82AFDE00A8F164 /* UIViewController+CDTools.swift in Sources */,
 				2844EBFC1D82AFD300A8F164 /* CDFileManager.swift in Sources */,
-				28A796BB1D81567E00907327 /* CDSpinnerView.swift in Sources */,
 				28A7969E1D8155AA00907327 /* UIApplication+CDTools.swift in Sources */,
 				28A7969F1D8155AA00907327 /* UIView+CDTools.swift in Sources */,
 				28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */,
+				286BFD671DF9507500055CF5 /* CDSpinnerView.swift in Sources */,
 				2844EC061D82AFF900A8F164 /* CDCircularProgressView.swift in Sources */,
 				2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */,
 				284828131DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift in Sources */,
@@ -380,8 +384,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -429,8 +435,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -450,6 +458,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -460,6 +469,7 @@
 		281429AC1D8151FE00F48404 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -477,6 +487,7 @@
 		281429AD1D8151FE00F48404 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

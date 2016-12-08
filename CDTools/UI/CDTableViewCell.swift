@@ -9,9 +9,6 @@
 import UIKit
 import Foundation
 
-
-
-
 public class CDTableViewCell: UITableViewCell {
     
     public var indexPath: NSIndexPath = NSIndexPath()
