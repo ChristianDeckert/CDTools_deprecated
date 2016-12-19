@@ -47,6 +47,7 @@ public class CDSpinnerViewAppearance {
         CDSpinnerViewAppearance.tintColor = nil
         CDSpinnerViewAppearance.borderColor = nil
         CDSpinnerViewAppearance.borderWidth = 0
+        CDSpinnerViewAppearance.shadowColor = UIColor.blackColor()
     }
     
     public static var animationDuration: Double = 0.3
@@ -64,6 +65,7 @@ public class CDSpinnerViewAppearance {
     public static var tintColor: UIColor?
     public static var borderColor: UIColor?
     public static var borderWidth: CGFloat = 0.0
+    public static var shadowColor: UIColor = UIColor.blackColor()
 }
 
 public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -126,7 +128,7 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.clipsToBounds = true
         
         if CDSpinnerViewAppearance.dropShadow {
-            self.layer.shadowColor = UIColor.blackColor().CGColor
+            self.layer.shadowColor =  CDSpinnerViewAppearance.shadowColor.CGColor
             self.layer.shadowRadius = CDSpinnerViewAppearance.shadowRadius
             self.layer.shadowOpacity = CDSpinnerViewAppearance.shadowOpacity
             self.layer.shadowOffset = CDSpinnerViewAppearance.shadowOffset
