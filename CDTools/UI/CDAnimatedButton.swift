@@ -1,6 +1,6 @@
 //
 //  AnimatedButton.swift
-//  Wishlist
+//  CDTools
 //
 //  Created by Christian Deckert on 15.11.16.
 //  Copyright © 2016 Christian Deckert.

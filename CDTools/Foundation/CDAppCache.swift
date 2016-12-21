@@ -1,6 +1,6 @@
 //
 //  CDAppCache.swift
-//  AdlerMannheimFanApp
+//  CDTools
 //
 //  Created by Christian Deckert on 06.07.16.
 //  Copyright © 2016 Christian Deckert. All rights reserved.

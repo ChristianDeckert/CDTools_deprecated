@@ -1,9 +1,9 @@
 //
 //  CDSpinnerView.swift
-//  AdlerMannheimFanApp
+//  CDTools
 //
 //  Created by Christian Deckert on 30.08.16.
-//  Copyright © 2016 x-root Software GmbH. All rights reserved.
+//  Copyright © 2016 Christian Deckert
 //
 
 import UIKit

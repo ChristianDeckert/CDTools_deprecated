@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28122BA91E0AC5F400C792DC /* CDLimitedLengthTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28122BA81E0AC5F400C792DC /* CDLimitedLengthTextfield.swift */; };
 		2814299B1D8151FE00F48404 /* CDTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 2814299A1D8151FE00F48404 /* CDTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		281429A21D8151FE00F48404 /* CDTools.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 281429971D8151FE00F48404 /* CDTools.framework */; };
 		281429A71D8151FE00F48404 /* CDToolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281429A61D8151FE00F48404 /* CDToolsTests.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28122BA81E0AC5F400C792DC /* CDLimitedLengthTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDLimitedLengthTextfield.swift; path = UI/CDLimitedLengthTextfield.swift; sourceTree = "<group>"; };
 		281429971D8151FE00F48404 /* CDTools.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CDTools.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2814299A1D8151FE00F48404 /* CDTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CDTools.h; sourceTree = "<group>"; };
 		2814299C1D8151FE00F48404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 		28A796911D8155A000907327 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				28122BA81E0AC5F400C792DC /* CDLimitedLengthTextfield.swift */,
 				286BFD631DF9507500055CF5 /* CDSpinnerView.swift */,
 				286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */,
 				286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */,
@@ -345,6 +348,7 @@
 				28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */,
 				284828141DDB20FE001F4EDB /* CDAnimatedButton.swift in Sources */,
 				28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */,
+				28122BA91E0AC5F400C792DC /* CDLimitedLengthTextfield.swift in Sources */,
 				28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */,
 				2844EC031D82AFDE00A8F164 /* UIImage+CDTools.swift in Sources */,
 				28A7969D1D8155AA00907327 /* NSLayoutConstraint+CDTools.swift in Sources */,
