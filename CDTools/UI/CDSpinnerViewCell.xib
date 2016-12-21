@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,29 +15,36 @@
             <rect key="frame" x="0.0" y="0.0" width="609" height="60"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5AB-31-uph" id="6Ah-Kc-hj8">
-                <rect key="frame" x="0.0" y="0.0" width="609" height="59"/>
+                <rect key="frame" x="0.0" y="0.0" width="609" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sw2-f5-1Z4">
                         <rect key="frame" x="0.0" y="0.0" width="609" height="59"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hwe-LN-dF9">
-                                <rect key="frame" x="0.0" y="0.0" width="609" height="59"/>
+                                <rect key="frame" x="4" y="0.0" width="601" height="59"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xiu-Fo-sPb">
+                                <rect key="frame" x="-0.5" y="0.0" width="609" height="59"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Hwe-LN-dF9" firstAttribute="leading" secondItem="Sw2-f5-1Z4" secondAttribute="leading" id="MTB-EW-tJH"/>
+                            <constraint firstItem="Xiu-Fo-sPb" firstAttribute="height" secondItem="Sw2-f5-1Z4" secondAttribute="height" id="0v2-Ex-FnO"/>
+                            <constraint firstItem="Xiu-Fo-sPb" firstAttribute="centerX" secondItem="Sw2-f5-1Z4" secondAttribute="centerX" id="3zk-97-2tG"/>
+                            <constraint firstItem="Xiu-Fo-sPb" firstAttribute="width" secondItem="Sw2-f5-1Z4" secondAttribute="width" id="BWc-2s-iut"/>
+                            <constraint firstItem="Hwe-LN-dF9" firstAttribute="leading" secondItem="Sw2-f5-1Z4" secondAttribute="leading" constant="4" id="MTB-EW-tJH"/>
+                            <constraint firstItem="Xiu-Fo-sPb" firstAttribute="centerY" secondItem="Sw2-f5-1Z4" secondAttribute="centerY" id="Vxg-3h-A4m"/>
                             <constraint firstItem="Hwe-LN-dF9" firstAttribute="top" secondItem="Sw2-f5-1Z4" secondAttribute="top" id="f0E-0C-Mrr"/>
-                            <constraint firstAttribute="trailing" secondItem="Hwe-LN-dF9" secondAttribute="trailing" id="fIi-tg-u98"/>
+                            <constraint firstAttribute="trailing" secondItem="Hwe-LN-dF9" secondAttribute="trailing" constant="4" id="fIi-tg-u98"/>
                             <constraint firstAttribute="bottom" secondItem="Hwe-LN-dF9" secondAttribute="bottom" id="urf-lQ-Llg"/>
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Sw2-f5-1Z4" secondAttribute="bottom" id="5Nh-x0-gOy"/>
                     <constraint firstAttribute="trailing" secondItem="Sw2-f5-1Z4" secondAttribute="trailing" id="MfM-m9-b0Y"/>
@@ -41,8 +52,9 @@
                     <constraint firstItem="Sw2-f5-1Z4" firstAttribute="top" secondItem="6Ah-Kc-hj8" secondAttribute="top" id="wL6-9P-JBw"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="iconImageView" destination="Xiu-Fo-sPb" id="8Fy-eN-XJx"/>
                 <outlet property="label" destination="Hwe-LN-dF9" id="ssK-xH-5ge"/>
             </connections>
             <point key="canvasLocation" x="1370.5" y="495"/>

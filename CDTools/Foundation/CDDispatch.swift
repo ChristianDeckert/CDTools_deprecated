@@ -161,16 +161,13 @@ public class CDDispatch {
         let d = interval * Double(NSEC_PER_SEC)
         _ = dispatch_time(DISPATCH_TIME_NOW, Int64(d))
         
-        if let timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue) {
-            let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(fireAfter))
-            dispatch_source_set_timer(timer, dispatchTime, repeatAfter, NSEC_PER_SEC)
-            if let block = block {
-                dispatch_source_set_event_handler(timer, block)
-            }
-            return timer
+        let timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue)
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(fireAfter))
+        dispatch_source_set_timer(timer, dispatchTime, repeatAfter, NSEC_PER_SEC)
+        if let block = block {
+            dispatch_source_set_event_handler(timer, block)
         }
-        
-        return nil
+        return timer
     }
     
     public class func newDispatchTimer(interval: Double, queue: dispatch_queue_t,  repeats: Bool) -> dispatch_source_t? {

@@ -219,7 +219,7 @@ public class CDCircularProgressView: UIView {
         progressView.hadInitialProgress = false
         
         
-        view.translatesAutoresizingMaskIntoConstraints = false
+        progressView.translatesAutoresizingMaskIntoConstraints = false
         
         var constraints = Array<NSLayoutConstraint>()
         let leading = NSLayoutConstraint(item: progressView, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)

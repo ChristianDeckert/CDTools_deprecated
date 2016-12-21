@@ -1,15 +1,40 @@
 Pod::Spec.new do |s|
 
 s.platform = :ios
-s.ios.deployment_target = '9.0'
+s.ios.deployment_target = '10.0'
 s.name = "CDTools"
-s.summary = "My swift tool box."
+s.summary = "My swift 2.3 tool box."
 s.requires_arc = true
-s.version = "1.0.1"
-s.license = { :type => "MIT", :file => "CDTools/LICENSE" }
+s.version = "1.5.2"
+#s.license = { :type => "MIT", :file => "CDTools/LICENSE" }
+s.license      = {
+:type => 'MIT',
+:text => <<-LICENSE
+Copyright (c) 2016 Christian Deckert
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+LICENSE
+}
+
 s.author = { "Christian Deckert" => "Christian.Deckert@icloud.com" }
 s.homepage = "https://github.com/ChristianDeckert/CDTools"
-s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "master" }
+s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "feature/swift23" }
 #s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :branch => "master", :tag => "#{s.version}"}
 #s.source = { :git => "https://github.com/ChristianDeckert/CDTools.git", :commit => "09285da0bdd09b25c7bb3585848c65934be7f2c8" }
 
