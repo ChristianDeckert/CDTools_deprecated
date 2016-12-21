@@ -20,21 +20,21 @@ extension UIViewController {
     /// :param: none
     /// :returns: class name as String
     public class func storyBoardIdentifier() -> String {
-        return String(NSStringFromClass(self.classForCoder()).componentsSeparatedByString(".")[1])
+        return String(NSStringFromClass(self.classForCoder()).components(separatedBy: ".")[1])
     }
     
     /// adds a child view controller
     
-    public func addChildViewController(viewController: UIViewController, animated: Bool, completionBlock: ((Void)->(Void))?) {
+    public func addChildViewController(_ viewController: UIViewController, animated: Bool, completionBlock: ((Void)->(Void))?) {
         
         self.addChildViewController(viewController)
         viewController.view.alpha = 0.0
         
         self.view.addSubview(viewController.view)
-        viewController.didMoveToParentViewController(self)
+        viewController.didMove(toParentViewController: self)
         viewController.beginAppearanceTransition(true, animated: animated)
         if animated {
-            UIView.animateWithDuration(0.4, animations: { () in viewController.view.alpha = 1.0 }, completion: { (complete) in
+            UIView.animate(withDuration: 0.4, animations: { () in viewController.view.alpha = 1.0 }, completion: { (complete) in
                 viewController.endAppearanceTransition()
                 if let completionBlock = completionBlock {
                     completionBlock()
@@ -49,7 +49,7 @@ extension UIViewController {
         }
     }
     
-    public func addChildViewController(viewController: UIViewController, parentView: UIView?, duration: Double, animations: ((Void)->(Void)), completionBlock: ((Void)->(Void))?) {
+    public func addChildViewController(_ viewController: UIViewController, parentView: UIView?, duration: Double, animations: @escaping ((Void)->(Void)), completionBlock: ((Void)->(Void))?) {
         
         self.addChildViewController(viewController)
         
@@ -58,10 +58,10 @@ extension UIViewController {
         } else {
             self.view.addSubview(viewController.view)
         }
-        viewController.didMoveToParentViewController(self)
+        viewController.didMove(toParentViewController: self)
         viewController.beginAppearanceTransition(true, animated: true)
         
-        UIView.animateWithDuration(duration, animations: animations, completion: { (complete) in
+        UIView.animate(withDuration: duration, animations: animations, completion: { (complete) in
             viewController.endAppearanceTransition()
             if let completionBlock = completionBlock {
                 completionBlock()
@@ -70,7 +70,7 @@ extension UIViewController {
     }
     
     /// remove a child view controller
-    public func removeChildViewController(viewController: UIViewController, animated: Bool) {
+    public func removeChildViewController(_ viewController: UIViewController, animated: Bool) {
         let animations = { [unowned viewController] () in
             viewController.view.alpha = 0.0
         }
@@ -79,18 +79,18 @@ extension UIViewController {
     }
     
     /// remove a child view controller
-    public func removeChildViewController(viewController: UIViewController, animated: Bool, delay: Double, animations: ((Void)->(Void)), completionBlock: ((Void) -> (Void))?) {
+    public func removeChildViewController(_ viewController: UIViewController, animated: Bool, delay: Double, animations: @escaping ((Void)->(Void)), completionBlock: ((Void) -> (Void))?) {
         
         if animated {
             viewController.view.alpha = 1.0
         }
         
         if animated {
-            UIView.animateKeyframesWithDuration(0.4, delay: delay, options: UIViewKeyframeAnimationOptions.AllowUserInteraction, animations: animations, completion: { (complete) in
-                    viewController.willMoveToParentViewController(nil)
+            UIView.animateKeyframes(withDuration: 0.4, delay: delay, options: UIViewKeyframeAnimationOptions.allowUserInteraction, animations: animations, completion: { (complete) in
+                    viewController.willMove(toParentViewController: nil)
                     viewController.beginAppearanceTransition(false, animated: animated)
                     viewController.removeFromParentViewController()
-                    viewController.didMoveToParentViewController(nil)
+                    viewController.didMove(toParentViewController: nil)
                     viewController.view.removeFromSuperview()
                     viewController.endAppearanceTransition()
                     if let completionBlock = completionBlock {
@@ -98,10 +98,10 @@ extension UIViewController {
                     }
             })
         } else {
-            viewController.willMoveToParentViewController(nil)
+            viewController.willMove(toParentViewController: nil)
             viewController.beginAppearanceTransition(false, animated: animated)
             viewController.removeFromParentViewController()
-            viewController.didMoveToParentViewController(nil)
+            viewController.didMove(toParentViewController: nil)
             viewController.view.removeFromSuperview()
             viewController.endAppearanceTransition()
             if let completionBlock = completionBlock {

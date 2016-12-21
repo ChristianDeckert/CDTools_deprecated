@@ -9,63 +9,63 @@
 import UIKit
 import Foundation
 
-public class CDKeyboardAwareTextfield: UITextField {
+open class CDKeyboardAwareTextfield: UITextField {
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    public override func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    open override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
         
         if nil == newSuperview {
             
         } else {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
     }
     
 
-    public func keyboardWillShow(notification: NSNotification) {
+    open func keyboardWillShow(_ notification: Notification) {
         
-        guard self.isFirstResponder() else {
+        guard self.isFirstResponder else {
             return
         }
         
-        guard let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+        guard let rootViewController: UIViewController = UIApplication.shared.keyWindow?.rootViewController else {
             return
         }
         
-        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() else {
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
         
         let v = self.superview ?? self
         
-        let rect = rootViewController.view.convertRect(v.frame, fromView: self)
+        let rect = rootViewController.view.convert(v.frame, from: self)
         let maxY = rect.origin.y + self.bounds.height
         
         let diff =  keyboardRect.origin.y - maxY
         
-        UIView.animateWithDuration(0.3) { 
+        UIView.animate(withDuration: 0.3, animations: { 
             if diff < 0 {
-                rootViewController.view.transform = CGAffineTransformMakeTranslation(0.0, diff - 10.0)
+                rootViewController.view.transform = CGAffineTransform(translationX: 0.0, y: diff - 10.0)
             } else {
-                rootViewController.view.transform = CGAffineTransformIdentity
+                rootViewController.view.transform = CGAffineTransform.identity
             }
-        }
+        }) 
         
         
     }
     
-    public func keyboardWillHide(notification: NSNotification) {
-        guard let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+    open func keyboardWillHide(_ notification: Notification) {
+        guard let rootViewController: UIViewController = UIApplication.shared.keyWindow?.rootViewController else {
             return
         }
-        UIView.animateWithDuration(0.3) {
-            rootViewController.view.transform = CGAffineTransformIdentity
-        }
+        UIView.animate(withDuration: 0.3, animations: {
+            rootViewController.view.transform = CGAffineTransform.identity
+        }) 
     }
 
 

@@ -23,6 +23,7 @@
 		286BFD681DF9507500055CF5 /* CDSpinnerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */; };
 		286BFD691DF9507500055CF5 /* CDSpinnerView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */; };
 		286BFD6A1DF9507500055CF5 /* CDSpinnerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286BFD661DF9507500055CF5 /* CDSpinnerView.xib */; };
+		2884BB2E1E0971C700B4DF39 /* CDSpinnerViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884BB2D1E0971C700B4DF39 /* CDSpinnerViewItem.swift */; };
 		28A796991D8155AA00907327 /* CDBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796921D8155AA00907327 /* CDBaseViewController.swift */; };
 		28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796931D8155AA00907327 /* CDTableViewCell.swift */; };
 		28A7969B1D8155AA00907327 /* CDTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796941D8155AA00907327 /* CDTableViewController.swift */; };
@@ -32,7 +33,6 @@
 		28A7969F1D8155AA00907327 /* UIView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796981D8155AA00907327 /* UIView+CDTools.swift */; };
 		28A796A91D8155BC00907327 /* Array+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A11D8155BC00907327 /* Array+CDTools.swift */; };
 		28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A21D8155BC00907327 /* CDAppCache.swift */; };
-		28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A31D8155BC00907327 /* CDDispatch.swift */; };
 		28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A41D8155BC00907327 /* CDRegEx.swift */; };
 		28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A61D8155BC00907327 /* NSURL+CDTools.swift */; };
 		28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A71D8155BC00907327 /* String+CDTools.swift */; };
@@ -71,6 +71,7 @@
 		286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerViewCell.xib; path = UI/CDSpinnerViewCell.xib; sourceTree = "<group>"; };
 		286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CDSpinnerView+CDTools.swift"; path = "UI/CDSpinnerView+CDTools.swift"; sourceTree = "<group>"; };
 		286BFD661DF9507500055CF5 /* CDSpinnerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CDSpinnerView.xib; path = UI/CDSpinnerView.xib; sourceTree = "<group>"; };
+		2884BB2D1E0971C700B4DF39 /* CDSpinnerViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDSpinnerViewItem.swift; path = UI/CDSpinnerViewItem.swift; sourceTree = "<group>"; };
 		28A796921D8155AA00907327 /* CDBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDBaseViewController.swift; path = UI/CDBaseViewController.swift; sourceTree = "<group>"; };
 		28A796931D8155AA00907327 /* CDTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewCell.swift; path = UI/CDTableViewCell.swift; sourceTree = "<group>"; };
 		28A796941D8155AA00907327 /* CDTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDTableViewController.swift; path = UI/CDTableViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		28A796981D8155AA00907327 /* UIView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+CDTools.swift"; path = "UI/UIView+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A11D8155BC00907327 /* Array+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+CDTools.swift"; path = "Foundation/Array+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A21D8155BC00907327 /* CDAppCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAppCache.swift; path = Foundation/CDAppCache.swift; sourceTree = "<group>"; };
-		28A796A31D8155BC00907327 /* CDDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDDispatch.swift; path = Foundation/CDDispatch.swift; sourceTree = "<group>"; };
 		28A796A41D8155BC00907327 /* CDRegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDRegEx.swift; path = Foundation/CDRegEx.swift; sourceTree = "<group>"; };
 		28A796A61D8155BC00907327 /* NSURL+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURL+CDTools.swift"; path = "Foundation/NSURL+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A71D8155BC00907327 /* String+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+CDTools.swift"; path = "Foundation/String+CDTools.swift"; sourceTree = "<group>"; };
@@ -155,6 +155,7 @@
 		28A796911D8155A000907327 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2884BB2D1E0971C700B4DF39 /* CDSpinnerViewItem.swift */,
 				286BFD631DF9507500055CF5 /* CDSpinnerView.swift */,
 				286BFD641DF9507500055CF5 /* CDSpinnerViewCell.xib */,
 				286BFD651DF9507500055CF5 /* CDSpinnerView+CDTools.swift */,
@@ -184,7 +185,6 @@
 				2844EBFB1D82AFD300A8F164 /* CDFileManager.swift */,
 				28A796A11D8155BC00907327 /* Array+CDTools.swift */,
 				28A796A21D8155BC00907327 /* CDAppCache.swift */,
-				28A796A31D8155BC00907327 /* CDDispatch.swift */,
 				28A796A41D8155BC00907327 /* CDRegEx.swift */,
 				28A796A61D8155BC00907327 /* NSURL+CDTools.swift */,
 				28A796A71D8155BC00907327 /* String+CDTools.swift */,
@@ -271,11 +271,11 @@
 				TargetAttributes = {
 					281429961D8151FE00F48404 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 					281429A01D8151FE00F48404 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0820;
 					};
 				};
 			};
@@ -326,7 +326,6 @@
 				28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */,
 				2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */,
 				28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */,
-				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
 				286BFD691DF9507500055CF5 /* CDSpinnerView+CDTools.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
 				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
@@ -340,6 +339,7 @@
 				28A796B01D8155BC00907327 /* UUID+CDTools.swift in Sources */,
 				286BFD671DF9507500055CF5 /* CDSpinnerView.swift in Sources */,
 				2844EC061D82AFF900A8F164 /* CDCircularProgressView.swift in Sources */,
+				2884BB2E1E0971C700B4DF39 /* CDSpinnerViewItem.swift in Sources */,
 				2844EC041D82AFDE00A8F164 /* UIImageView+CDTools.swift in Sources */,
 				284828131DDB20FE001F4EDB /* CDAnimatedBarButtonItem.swift in Sources */,
 				28A7969C1D8155AA00907327 /* CDTableViewTableModel.swift in Sources */,
@@ -410,11 +410,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -455,10 +456,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -476,11 +478,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CDTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -494,11 +497,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CDTools/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -506,10 +510,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = CDToolsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -517,10 +522,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = CDToolsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

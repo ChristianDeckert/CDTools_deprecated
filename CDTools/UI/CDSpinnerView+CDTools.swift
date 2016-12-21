@@ -11,8 +11,8 @@ import UIKit
 
 public extension UITextField {
     
-    public func presentSpinner(withItems items: [CDSpinnerViewItem], callbackBlock block: CDSpinnerViewItem -> Void, applyTextfieldAppearance: Bool = false, completion: (Void -> Void)? = nil) -> CDSpinnerView? {
-        guard let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+    public func presentSpinner(withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, applyTextfieldAppearance: Bool = false, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
+        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
             return nil
         }
         
@@ -22,17 +22,17 @@ public extension UITextField {
         }
         
         if applyTextfieldAppearance {
-            CDSpinnerViewAppearance.backgroundStyle = .Color(color: self.backgroundColor ?? UIColor.whiteColor())
+            CDSpinnerViewAppearance.backgroundStyle = .color(color: self.backgroundColor ?? UIColor.white)
             if let font = self.font {
                 CDSpinnerViewAppearance.font = font
             }
-            CDSpinnerViewAppearance.textColor = self.textColor ?? UIColor.blackColor()
+            CDSpinnerViewAppearance.textColor = self.textColor ?? UIColor.black
             CDSpinnerViewAppearance.cornerRadius = self.layer.cornerRadius <= 0 ? 5.0 : self.layer.cornerRadius
             CDSpinnerViewAppearance.cellHeight = self.bounds.height
         }
         
         if let text = self.text {
-            for (index, item) in items.enumerate() {
+            for (index, item) in items.enumerated() {
                 if item.humanReadableString() == text {
                     CDSpinnerViewAppearance.selectedItemIndex = index
                     break
@@ -40,7 +40,7 @@ public extension UITextField {
             }
         }
         
-        let rect = viewController.view.convertRect(self.frame, fromView: superView)
+        let rect = viewController.view.convert(self.frame, from: superView)
         return CDSpinnerView.present(inViewController: viewController, withItems: items, callbackBlock: block, sourceRect: rect, willPresentClosure: nil, completion: completion)
     }
     
@@ -48,23 +48,23 @@ public extension UITextField {
 
 extension CDSpinnerView {
     
-    public static func present(withItems items: [CDSpinnerViewItem], callbackBlock block: CDSpinnerViewItem -> Void, completion: (Void -> Void)? = nil) -> CDSpinnerView? {
-        guard let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+    public static func present(withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
+        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
             return nil
         }
         
         return present(inViewController: viewController, withItems: items, callbackBlock: block, willPresentClosure: nil, completion: completion)
     }
     
-    public static func present(fromRect sourceRect: CGRect, withItems items: [CDSpinnerViewItem], callbackBlock block: CDSpinnerViewItem -> Void, completion: (Void -> Void)? = nil) -> CDSpinnerView? {
+    public static func present(fromRect sourceRect: CGRect, withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
         
         return CDSpinnerView.present(fromRect: sourceRect, withItems: items, willPresentClosure: { spinnerView in
             
             }, callbackBlock: block, completion: completion)
     }
     
-    public static func present(fromRect sourceRect: CGRect, withItems items: [CDSpinnerViewItem], willPresentClosure: (CDSpinnerView -> Void), callbackBlock block: CDSpinnerViewItem -> Void, completion: (Void -> Void)? = nil) -> CDSpinnerView? {
-        guard let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+    public static func present(fromRect sourceRect: CGRect, withItems items: [CDSpinnerViewItem], willPresentClosure: @escaping ((CDSpinnerView) -> Void), callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
+        guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
             return nil
         }
         

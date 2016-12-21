@@ -9,14 +9,14 @@
 import UIKit
 import Foundation
 
-public class CDTableViewCell: UITableViewCell {
+open class CDTableViewCell: UITableViewCell {
     
-    public var indexPath: NSIndexPath = NSIndexPath()
-    public weak var weakContentView: UIView?
-    public weak var paddingView: UIView?
-    public var padding: CGFloat = 32.0    
+    open var indexPath: IndexPath = IndexPath()
+    open weak var weakContentView: UIView?
+    open weak var paddingView: UIView?
+    open var padding: CGFloat = 32.0    
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         self.commonInit()
     }
@@ -32,22 +32,22 @@ public class CDTableViewCell: UITableViewCell {
     }
 
     /// To be overitten in sub classes
-    public func commonInit() {
+    open func commonInit() {
 
     }
 
-    public class func cellReuseIdentifier() -> String {
-        return String(NSStringFromClass(self.classForCoder()).componentsSeparatedByString(".")[1] ?? "Unexpected Error")
+    open class func cellReuseIdentifier() -> String {
+        return String(NSStringFromClass(self.classForCoder()).components(separatedBy: ".")[1])
     }
     
     
-    public func setPaddingLevel(level: Int) {
+    open func setPaddingLevel(_ level: Int) {
     
         if let paddingView = self.paddingView {
             
             var widthConstraint: NSLayoutConstraint? = nil
             for constraint in paddingView.constraints {
-                if constraint.firstAttribute == NSLayoutAttribute.Width {
+                if constraint.firstAttribute == NSLayoutAttribute.width {
                     if let firstView = constraint.firstItem as? UIView {
                         if firstView == paddingView {
                             widthConstraint = constraint
@@ -58,11 +58,11 @@ public class CDTableViewCell: UITableViewCell {
             }
             
             if let oldWidthConstraint = widthConstraint {
-                let newWidthConstraint = NSLayoutConstraint(item: paddingView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: self.padding * CGFloat(level))
+                let newWidthConstraint = NSLayoutConstraint(item: paddingView, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.width, multiplier: 1.0, constant: self.padding * CGFloat(level))
                 paddingView.removeConstraint(oldWidthConstraint)
                 paddingView.addConstraint(newWidthConstraint)
                 
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                UIView.animate(withDuration: 0.4, animations: { () -> Void in
                     paddingView.setNeedsLayout()
                     paddingView.layoutIfNeeded()
                 })

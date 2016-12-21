@@ -9,12 +9,12 @@
 import Foundation
 
 
-public class CDUUID: NSObject {
+open class CDUUID: NSObject {
     
-    public class func newUUID() -> String {
+    open class func newUUID() -> String {
         let uuid = CFUUIDCreate(kCFAllocatorDefault)
         let uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuid)
-        return uuidString as String
+        return uuidString as! String
     }
     
 }

@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 public extension UIView {
-    func fadeIn(completion: ((Void) -> (Void))? = nil) {
-        let options = UIViewAnimationOptions.CurveEaseInOut
+    func fadeIn(_ completion: ((Void) -> (Void))? = nil) {
+        let options = UIViewAnimationOptions()
         
-        UIView.animateWithDuration(0.4, delay: 0.0, options: options, animations: { () -> Void in
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: options, animations: { () -> Void in
             self.alpha = 1.0
         }) { (Bool) -> Void in
             if nil != completion {
@@ -22,14 +22,14 @@ public extension UIView {
         }
     }
     
-    public func fadeOut(completion: ((Void) -> (Void))? = nil) {
+    public func fadeOut(_ completion: ((Void) -> (Void))? = nil) {
         self.fadeWithDuration(0.4, alpha: 0.0, delay: 0.0, completion: completion)
     }
     
-    public func fadeWithDuration(duration: Double, alpha: Double, delay: Double, completion: ((Void) -> (Void))?) {
-        let options = UIViewAnimationOptions.CurveLinear
+    public func fadeWithDuration(_ duration: Double, alpha: Double, delay: Double, completion: ((Void) -> (Void))?) {
+        let options = UIViewAnimationOptions.curveLinear
         
-        UIView.animateWithDuration(duration, delay: delay, options: options, animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: delay, options: options, animations: { () -> Void in
             self.alpha = CGFloat(alpha)
         }) { (Bool) -> Void in
             if nil != completion {
@@ -38,12 +38,12 @@ public extension UIView {
         }
     }
     
-    public func rotate(degress: Double, completion: ((Void) -> (Void))?) {
+    public func rotate(_ degress: Double, completion: ((Void) -> (Void))?) {
         
         let radians =  (degress * M_PI/180.0)
-        let rotation = CGAffineTransformMakeRotation(CGFloat(radians));
+        let rotation = CGAffineTransform(rotationAngle: CGFloat(radians));
         
-        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.transform = rotation
         }) { (Bool) -> Void in
             if nil != completion {

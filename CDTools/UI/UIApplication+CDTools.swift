@@ -11,10 +11,10 @@ import UIKit
 
 public extension UIApplication {
     public class func isPad() -> Bool {
-        if let appDelegate = UIApplication.sharedApplication().delegate {
+        if let appDelegate = UIApplication.shared.delegate {
             if let window = appDelegate.window! {
                 if let rootVC = window.rootViewController {
-                    return rootVC.traitCollection.userInterfaceIdiom == .Pad
+                    return rootVC.traitCollection.userInterfaceIdiom == .pad
                 }
             }
         }
@@ -26,21 +26,21 @@ public extension UIApplication {
     }
     
     public class func isLandscape() -> Bool {
-        return UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication().statusBarOrientation)
+        return UIInterfaceOrientationIsLandscape(UIApplication.shared.statusBarOrientation)
     }
     
     public class func isPortrait() -> Bool {
-        return UIInterfaceOrientationIsPortrait(UIApplication.sharedApplication().statusBarOrientation)
+        return UIInterfaceOrientationIsPortrait(UIApplication.shared.statusBarOrientation)
     }
     
     
     
     class func appVersion() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+        return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
     
     class func appBuild() -> String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
+        return Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
     }
     
     

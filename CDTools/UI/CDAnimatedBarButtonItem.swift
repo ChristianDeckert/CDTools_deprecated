@@ -10,7 +10,7 @@ public extension UIBarButtonItem {
     
     /// Needed to fix the 16pt insets for Bar Buttons with custom views introduced in iOS7
     public static var fixedSpaceItem: UIBarButtonItem {
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.fixedSpace, target: nil, action: nil)
         spacer.width = -UIBarButtonItem.defaultFixedSpace
         return spacer
     }
@@ -18,15 +18,15 @@ public extension UIBarButtonItem {
 }
 
 public enum CDAnimatedBarButtonItemCallbackTiming: Int {
-    case Immediately = 0
-    case FirstHalf
-    case SecondHalf
+    case immediately = 0
+    case firstHalf
+    case secondHalf
 }
 
 
 public struct CDAnimatedBarButtonItemOptions {
-    public var rippleColor: UIColor = UIColor.blackColor().colorWithAlphaComponent(0.10)
-    public var contentMode: UIViewContentMode = .ScaleAspectFit
+    public var rippleColor: UIColor = UIColor.black.withAlphaComponent(0.10)
+    public var contentMode: UIViewContentMode = .scaleAspectFit
     public var font: UIFont?
     public var animationDuration: CGFloat = 0.4
     public var animationScaleFactor: CGFloat = 0.65
@@ -34,51 +34,51 @@ public struct CDAnimatedBarButtonItemOptions {
     public var frame: CGRect?
     public var title: String?
     public var icon: UIImage?
-    public var callback: ((animatedBarButtonItem: CDAnimatedBarButtonItem?) -> Void)? = nil
-    public var callbackTiming: CDAnimatedBarButtonItemCallbackTiming = .FirstHalf
+    public var callback: ((_ animatedBarButtonItem: CDAnimatedBarButtonItem?) -> Void)? = nil
+    public var callbackTiming: CDAnimatedBarButtonItemCallbackTiming = .firstHalf
     
     public static var defaults: CDAnimatedBarButtonItemOptions {
         return CDAnimatedBarButtonItemOptions()
     }
 }
 
-public typealias CDAnimatedBarButtonCallback = (animatedBarButtonItem: CDAnimatedBarButtonItem?) -> Void
+public typealias CDAnimatedBarButtonCallback = (_ animatedBarButtonItem: CDAnimatedBarButtonItem?) -> Void
 
-public class CDAnimatedBarButtonItem: UIBarButtonItem {
+open class CDAnimatedBarButtonItem: UIBarButtonItem {
     
     class NotifyingButton: UIButton {
         
-        var onDidMoveToSuperView: ((notifyingButton: NotifyingButton, superview: UIView?) -> Void)?
+        var onDidMoveToSuperView: ((_ notifyingButton: NotifyingButton, _ superview: UIView?) -> Void)?
         
         override func didMoveToSuperview() {
             super.didMoveToSuperview()
             
             if let superview = self.superview {
-                onDidMoveToSuperView?(notifyingButton: self, superview: superview)
+                onDidMoveToSuperView?(self, superview)
             } else {
-                onDidMoveToSuperView?(notifyingButton: self, superview: nil)
+                onDidMoveToSuperView?(self, nil)
                 onDidMoveToSuperView = nil
             }
         }
         
-        override func alignmentRectInsets() -> UIEdgeInsets {
-            return UIEdgeInsetsZero
+        override var alignmentRectInsets : UIEdgeInsets {
+            return UIEdgeInsets.zero
         }
         
     }
     
-    public var options: CDAnimatedBarButtonItemOptions = CDAnimatedBarButtonItemOptions.defaults {
+    open var options: CDAnimatedBarButtonItemOptions = CDAnimatedBarButtonItemOptions.defaults {
         
         didSet {
             updateUI()
         }
     }
     
-    public var onTapCallback: CDAnimatedBarButtonCallback?
-    public var onDidMoveToSuperViewCallback: CDAnimatedBarButtonCallback?
+    open var onTapCallback: CDAnimatedBarButtonCallback?
+    open var onDidMoveToSuperViewCallback: CDAnimatedBarButtonCallback?
     
     
-    @IBInspectable public var font: UIFont? {
+    @IBInspectable open var font: UIFont? {
         set {
             self.options.font = newValue
             updateUI()
@@ -89,7 +89,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable public var textColor: UIColor? {
+    @IBInspectable open var textColor: UIColor? {
         set {
             self.options.textColor = newValue
             updateUI()
@@ -100,7 +100,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable public var rippleColor: UIColor? {
+    @IBInspectable open var rippleColor: UIColor? {
         set {
             self.options.rippleColor = newValue ?? CDAnimatedBarButtonItemOptions.defaults.rippleColor
             updateUI()
@@ -111,7 +111,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    public var contentMode: UIViewContentMode? {
+    open var contentMode: UIViewContentMode? {
         set {
             self.options.contentMode = newValue ?? CDAnimatedBarButtonItemOptions.defaults.contentMode
             updateUI()
@@ -122,7 +122,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable public var frame: CGRect? {
+    @IBInspectable open var frame: CGRect? {
         set {
             self.options.frame = newValue
             updateUI()
@@ -133,7 +133,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable public var icon: UIImage? {
+    @IBInspectable open var icon: UIImage? {
         set {
             self.options.icon = newValue
             updateUI()
@@ -144,7 +144,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable public var text: String? {
+    @IBInspectable open var text: String? {
         set {
             self.options.title = newValue
             updateUI()
@@ -155,7 +155,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    public override var title: String? {
+    open override var title: String? {
         get {
             return self.options.title
         }
@@ -166,8 +166,8 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    private weak var label: UILabel?
-    private weak var imageView: UIImageView?
+    fileprivate weak var label: UILabel?
+    fileprivate weak var imageView: UIImageView?
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -178,14 +178,14 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         super.init()
         commonInit()
     }
-    public init(title: String?, callback: CDAnimatedBarButtonCallback) {
+    public init(title: String?, callback: @escaping CDAnimatedBarButtonCallback) {
         super.init()
         onTapCallback = callback
         self.title = title
         commonInit()
     }
     
-    public init(icon: UIImage?, callback: CDAnimatedBarButtonCallback) {
+    public init(icon: UIImage?, callback: @escaping CDAnimatedBarButtonCallback) {
         super.init()
         onTapCallback = callback
         self.icon = icon
@@ -193,7 +193,7 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         
     }
     
-    public init(icon: UIImage?, contentMode: UIViewContentMode, callback: CDAnimatedBarButtonCallback) {
+    public init(icon: UIImage?, contentMode: UIViewContentMode, callback: @escaping CDAnimatedBarButtonCallback) {
         super.init()
         self.onTapCallback = callback
         self.icon = icon
@@ -201,58 +201,58 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         self.contentMode = contentMode
     }
     
-    public init(options: CDAnimatedBarButtonItemOptions, callback: CDAnimatedBarButtonCallback) {
+    public init(options: CDAnimatedBarButtonItemOptions, callback: @escaping CDAnimatedBarButtonCallback) {
         super.init()
         self.options = options
         commonInit()
         self.onTapCallback = callback
     }
     
-    public func commonInit() {
+    open func commonInit() {
         updateUI()
     }
     
-    private func updateUI() {
+    fileprivate func updateUI() {
         
-        let frame = self.frame ?? CGRectMake(0, 0, 38, 38)
+        let frame = self.frame ?? CGRect(x: 0, y: 0, width: 38, height: 38)
         var buttonCustomView: UIView
         if let text = self.text {
             let label = UILabel()
-            label.backgroundColor = UIColor.clearColor()
+            label.backgroundColor = UIColor.clear
             label.textColor = self.textColor ?? self.tintColor
-            label.font = self.font ?? UIFont.systemFontOfSize(UIFont.buttonFontSize())
+            label.font = self.font ?? UIFont.systemFont(ofSize: UIFont.buttonFontSize)
             label.text = text
-            label.textAlignment = .Center
+            label.textAlignment = .center
             label.minimumScaleFactor = 0.2
             label.adjustsFontSizeToFitWidth = true
             buttonCustomView = label
             self.label = label
         } else {
             let imageView = UIImageView()
-            imageView.backgroundColor = UIColor.clearColor()
+            imageView.backgroundColor = UIColor.clear
             imageView.image = icon
-            imageView.contentMode = self.contentMode ?? .ScaleAspectFit
+            imageView.contentMode = self.contentMode ?? .scaleAspectFit
             imageView.tintColor = tintColor
             buttonCustomView = imageView
             self.imageView = imageView
         }
         
-        let button = NotifyingButton(type: UIButtonType.Custom)
+        let button = NotifyingButton(type: UIButtonType.custom)
         button.onDidMoveToSuperView = { [weak self] (notifyingButton, superview) in
             guard let welf = self else {
                 return
             }
             
-            welf.onDidMoveToSuperViewCallback?(animatedBarButtonItem: welf)
+            welf.onDidMoveToSuperViewCallback?(welf)
         }
         
         button.frame = frame
         buttonCustomView.frame = button.bounds
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 0
-        button.autoresizingMask = UIViewAutoresizing.FlexibleHeight.union(.FlexibleWidth)
+        button.autoresizingMask = UIViewAutoresizing.flexibleHeight.union(.flexibleWidth)
         button.addSubview(buttonCustomView)
-        button.addTarget(self, action: #selector(tapAction(_:)), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(tapAction(_:)), for: .touchUpInside)
         button.setNeedsUpdateConstraints()
         button.setNeedsLayout()
         button.setNeedsDisplay()
@@ -261,53 +261,53 @@ public class CDAnimatedBarButtonItem: UIBarButtonItem {
         self.customView = button
     }
     
-    public func addTargetForAction(target: AnyObject, action: Selector) {
+    open func addTargetForAction(_ target: AnyObject, action: Selector) {
         self.target = target
         self.action = action
     }
     
-    public func tapAction(sender: AnyObject?) {
+    open func tapAction(_ sender: AnyObject?) {
         
         guard let button = self.customView as? UIButton else {
-            onTapCallback?(animatedBarButtonItem: self)
+            onTapCallback?(self)
             return
         }
         
         guard let subview = button.subviews.first else {
-            onTapCallback?(animatedBarButtonItem: self)
+            onTapCallback?(self)
             return
         }
         
-        if self.options.callbackTiming == .Immediately {
-            onTapCallback?(animatedBarButtonItem: self)
+        if self.options.callbackTiming == .immediately {
+            onTapCallback?(self)
         }
         
         let halfDuration = Double(self.options.animationDuration/2)
-        UIView.animateWithDuration(halfDuration, animations: {
-            subview.transform = CGAffineTransformMakeScale(self.options.animationScaleFactor, self.options.animationScaleFactor)
+        UIView.animate(withDuration: halfDuration, animations: {
+            subview.transform = CGAffineTransform(scaleX: self.options.animationScaleFactor, y: self.options.animationScaleFactor)
             button.backgroundColor = self.options.rippleColor
-        }) { complete in
+        }, completion: { complete in
             
-            if self.options.callbackTiming == .FirstHalf {
-                self.onTapCallback?(animatedBarButtonItem: self)
+            if self.options.callbackTiming == .firstHalf {
+                self.onTapCallback?(self)
             }
             
-            UIView.animateWithDuration(halfDuration, animations: {
-                button.backgroundColor = UIColor.clearColor()
-                subview.transform = CGAffineTransformIdentity
-            }) { complete in
-                if self.options.callbackTiming == .SecondHalf {
-                    self.onTapCallback?(animatedBarButtonItem: self)
+            UIView.animate(withDuration: halfDuration, animations: {
+                button.backgroundColor = UIColor.clear
+                subview.transform = CGAffineTransform.identity
+            }, completion: { complete in
+                if self.options.callbackTiming == .secondHalf {
+                    self.onTapCallback?(self)
                 }
-            }
-        }
+            }) 
+        }) 
     }
     
-    public func updateImage(newImage image: UIImage?) {
+    open func updateImage(newImage image: UIImage?) {
         guard let customView = (self.customView as? UIButton)?.subviews.first as? UIImageView else {
             return
         }
-        UIView.transitionWithView(customView, duration: 0.4, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+        UIView.transition(with: customView, duration: 0.4, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
             customView.image = image
         }, completion: nil)
         
