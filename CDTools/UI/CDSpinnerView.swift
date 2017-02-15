@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 
-
 @objc public protocol CDSpinnerViewItem: NSObjectProtocol {
     
     func humanReadableString() -> String
@@ -29,14 +28,21 @@ public enum CDSpinnerViewBackgroundStyle {
     case Color(color: UIColor)
 }
 
+public enum CDSpinnerViewBoundsBehavior {
+    case ShrinkIfNeeded
+    case AdjustIfNeeded
+}
 public class CDSpinnerViewAppearance {
     
     public static func defaultAppearance() {
         CDSpinnerViewAppearance.animationDuration = 0.3
         CDSpinnerViewAppearance.backgroundStyle = .Translucent
         CDSpinnerViewAppearance.cornerRadius = 0
+        CDSpinnerViewAppearance.borderColor = UIColor.clearColor()
+        CDSpinnerViewAppearance.borderWidth = 0
         CDSpinnerViewAppearance.font = nil
         CDSpinnerViewAppearance.textColor = UIColor.blackColor()
+        CDSpinnerViewAppearance.selectedItemTextColor = nil
         CDSpinnerViewAppearance.cellHeight = 44.0
         CDSpinnerViewAppearance.selectedItemIndex = nil
         CDSpinnerViewAppearance.dropShadow = false
@@ -45,9 +51,11 @@ public class CDSpinnerViewAppearance {
         CDSpinnerViewAppearance.shadowOffset = CGSizeZero
         CDSpinnerViewAppearance.imageContentMode = .Center
         CDSpinnerViewAppearance.tintColor = nil
+        CDSpinnerViewAppearance.boundsBehavior = .ShrinkIfNeeded
         CDSpinnerViewAppearance.borderColor = nil
         CDSpinnerViewAppearance.borderWidth = 0
         CDSpinnerViewAppearance.shadowColor = UIColor.blackColor()
+        CDSpinnerViewAppearance.insets = UIEdgeInsetsZero
     }
     
     public static var animationDuration: Double = 0.3
@@ -55,6 +63,7 @@ public class CDSpinnerViewAppearance {
     public static var cornerRadius: CGFloat = 0
     public static var font: UIFont?
     public static var textColor = UIColor.blackColor()
+    public static var selectedItemTextColor: UIColor?
     public static var cellHeight: CGFloat = 44.0
     public static var selectedItemIndex: Int?
     public static var dropShadow: Bool = false
@@ -63,10 +72,53 @@ public class CDSpinnerViewAppearance {
     public static var shadowOffset: CGSize = CGSizeZero
     public static var imageContentMode: UIViewContentMode = .Center
     public static var tintColor: UIColor?
-    public static var borderColor: UIColor?
+    public static var borderColor: UIColor? = UIColor.clearColor()
     public static var borderWidth: CGFloat = 0.0
     public static var shadowColor: UIColor = UIColor.blackColor()
+    public static var boundsBehavior: CDSpinnerViewBoundsBehavior = .ShrinkIfNeeded
+    public static var insets = UIEdgeInsetsZero
 }
+
+public extension CDSpinnerView {
+    
+    public func setImage(newImage: UIImage?, forCellAtIndex index: Int, animated: Bool = true) {
+        
+        guard index < items.count && index >= 0 else { return }
+        
+        guard let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? CDSpinnerViewCell else { return }
+        cell.iconImageView.tintColor = CDSpinnerViewAppearance.tintColor
+        
+        if animated {
+            UIView.transitionWithView(cell.iconImageView, duration: 0.4, options: .TransitionCrossDissolve, animations: {
+                cell.iconImageView.image = newImage
+                cell.label.text = nil
+            }, completion: nil)
+            
+        } else {
+            cell.iconImageView.image = newImage
+            cell.label.text = nil
+        }
+    }
+    
+    public func setText(newText text: String?, forCellAtIndex index: Int, animated: Bool = true) {
+        
+        guard index < items.count && index >= 0 else { return }
+        
+        guard let cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0)) as? CDSpinnerViewCell else { return }
+        
+        if animated {
+            UIView.transitionWithView(cell.iconImageView, duration: 0.4, options: .TransitionCrossDissolve, animations: {
+                cell.label.text = text
+                cell.iconImageView.image = nil
+            }, completion: nil)
+            
+        } else {
+            cell.label.text = text
+            cell.iconImageView.image = nil
+        }
+    }
+}
+
 
 public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
     
@@ -128,7 +180,7 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.clipsToBounds = true
         
         if CDSpinnerViewAppearance.dropShadow {
-            self.layer.shadowColor =  CDSpinnerViewAppearance.shadowColor.CGColor
+            self.layer.shadowColor = CDSpinnerViewAppearance.shadowColor.CGColor ?? UIColor.blackColor().CGColor
             self.layer.shadowRadius = CDSpinnerViewAppearance.shadowRadius
             self.layer.shadowOpacity = CDSpinnerViewAppearance.shadowOpacity
             self.layer.shadowOffset = CDSpinnerViewAppearance.shadowOffset
@@ -219,16 +271,16 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
             UIView.animateWithDuration(CDSpinnerViewAppearance.animationDuration, animations: {
                 self.frame = sourceRect
                 self.alpha = 0
-                }, completion: { (complete) in
-                    completion?()
-                    self.removeFromSuperview()
+            }, completion: { (complete) in
+                completion?()
+                self.removeFromSuperview()
             })
         } else {
             UIView.animateWithDuration(CDSpinnerViewAppearance.animationDuration, animations: {
                 self.transform = CGAffineTransformMakeScale(0.01, 0.01)
-                }, completion: { (complete) in
-                    completion?()
-                    self.removeFromSuperview()
+            }, completion: { (complete) in
+                completion?()
+                self.removeFromSuperview()
             })
         }
         
@@ -244,6 +296,7 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         if let image = item.image?() {
             cell.label.hidden = true
             cell.iconImageView.image = image
+            cell.iconImageView.tintColor = CDSpinnerViewAppearance.tintColor
         } else {
             cell.label.hidden = false
             cell.iconImageView.image = nil
@@ -252,7 +305,11 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         if let font = CDSpinnerViewAppearance.font {
             cell.label.font = font
         }
-        cell.label.textColor = CDSpinnerViewAppearance.textColor
+        if let selectedItemIndex = CDSpinnerViewAppearance.selectedItemIndex where selectedItemIndex == indexPath.row && CDSpinnerViewAppearance.selectedItemTextColor != nil {
+            cell.label.textColor = CDSpinnerViewAppearance.selectedItemTextColor
+        } else {
+            cell.label.textColor = CDSpinnerViewAppearance.textColor
+        }
         cell.indexPath = indexPath
         return cell
     }
@@ -279,18 +336,36 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
             
             willPresentClosure?(spinnerView)
             
+            let insets = CDSpinnerViewAppearance.insets
+            
             if let sourceRect = sourceRect {
-                let h: CGFloat = UIScreen.mainScreen().bounds.height
+                let h: CGFloat = UIScreen.mainScreen().bounds.height - 20.0 // UIApplication.sharedApplication().statusBarFrame.height
                 let initalRect = CGRectMake(sourceRect.origin.x, sourceRect.origin.y, sourceRect.width, 0)
                 spinnerView.frame = initalRect
                 
-                let finalHeight: CGFloat = min(h - sourceRect.origin.y, CGFloat(items.count) * CDSpinnerViewAppearance.cellHeight)
-                let finalRect = CGRectMake(sourceRect.origin.x, sourceRect.origin.y, sourceRect.width, finalHeight)
+                var finalRect: CGRect
+                if CDSpinnerViewAppearance.boundsBehavior == .ShrinkIfNeeded {
+                    
+                    let maxHeight = h - sourceRect.origin.y - insets.top - insets.bottom
+                    let calcHeight = CGFloat(items.count) * CDSpinnerViewAppearance.cellHeight
+                    let finalHeight: CGFloat = min(maxHeight, calcHeight)
+                    finalRect = CGRectMake(sourceRect.origin.x - insets.left, sourceRect.origin.y + insets.top, sourceRect.width - insets.right, finalHeight)
+                    
+                } else {
+                    let spinnerHeight: CGFloat = CGFloat(items.count) * CDSpinnerViewAppearance.cellHeight
+                    finalRect = CGRectMake(sourceRect.origin.x, sourceRect.origin.y, sourceRect.width, spinnerHeight)
+                    
+                    let overlapping: CGFloat = h - (sourceRect.origin.y + spinnerHeight)
+                    if overlapping < 0 {
+                        finalRect.origin.y = finalRect.origin.y + overlapping
+                    }
+                    
+                }
                 UIView.animateWithDuration(CDSpinnerViewAppearance.animationDuration, animations: {
                     spinnerView.alpha = 1
                     spinnerView.frame = finalRect
-                    }, completion: { (complete) in
-                        completion?()
+                }, completion: { (complete) in
+                    completion?()
                 })
                 
             } else {
@@ -304,8 +379,8 @@ public class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
                     spinnerView.alpha = 1
                     spinnerView.transform = CGAffineTransformIdentity
                     
-                    }, completion: { (complete) in
-                        completion?()
+                }, completion: { (complete) in
+                    completion?()
                 })
             }
             
