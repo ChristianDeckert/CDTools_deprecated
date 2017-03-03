@@ -11,7 +11,22 @@ import UIKit
 
 extension UIViewController {
     
-    
+    static var topViewController: UIViewController? {
+        
+        guard let rootViewController: UIViewController = UIApplication.sharedApplication().keyWindow?.rootViewController else {
+            return nil
+        }
+        
+        var topViewController: UIViewController = rootViewController
+        
+        while topViewController.presentedViewController != nil {
+            topViewController = topViewController.presentedViewController!
+        }
+        
+        return topViewController
+        
+    }
+
     // MARK: - Storyboard ID
     
     /// This class method extracts the class name that is used as Storyboard Identifier.
