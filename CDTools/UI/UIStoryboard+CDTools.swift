@@ -10,15 +10,15 @@ import Foundation
 import UIKit
 
 public extension UIStoryboard {
-    public static func mainStoryboard(bundle: NSBundle? = nil) -> UIStoryboard {
+    public static func mainStoryboard(_ bundle: Bundle? = nil) -> UIStoryboard {
         return UIStoryboard(name: "Main", bundle: bundle)
     }
     
-    public static func padStoryboard(bundle: NSBundle? = nil) -> UIStoryboard {
+    public static func padStoryboard(_ bundle: Bundle? = nil) -> UIStoryboard {
         return UIStoryboard(name: "iPad", bundle: bundle)
     }
     
-    public static func phoneStoryboard(bundle: NSBundle? = nil) -> UIStoryboard {
+    public static func phoneStoryboard(_ bundle: Bundle? = nil) -> UIStoryboard {
         return UIStoryboard(name: "iPhone", bundle: bundle)
     }
 }

@@ -11,31 +11,31 @@ import Foundation
 
 public let CDKeyboardAwareTextFieldLostFocusNotification = "KeyboardAwareTextFieldLostFocusNotification"
 
-public class CDKeyboardAwareTextfield: UITextField {
+open class CDKeyboardAwareTextfield: UITextField {
     
-    public var onLostFocus: ((keyboardAwareTextField: CDKeyboardAwareTextfield) -> Void)? = nil
+    open var onLostFocus: ((_ keyboardAwareTextField: CDKeyboardAwareTextfield) -> Void)? = nil
     
     deinit {
         onLostFocus = nil
     }
     
-    public override func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
+    open override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
         
         if nil == newSuperview {
-            NSNotificationCenter.defaultCenter().removeObserver(self)
+            NotificationCenter.default.removeObserver(self)
         } else {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(CDKeyboardAwareTextfield.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         }
     }
     
     
     /* todo: verify if special treatment is needed when textfield is embedded in a table view (cell)
      */
-    public func keyboardWillShow(notification: NSNotification) {
+    open func keyboardWillShow(_ notification: Notification) {
         
-        guard self.isFirstResponder() else {
+        guard self.isFirstResponder else {
             return
         }
         
@@ -43,46 +43,46 @@ public class CDKeyboardAwareTextfield: UITextField {
             return
         }
         
-        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() else {
+        guard let keyboardRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
         
         let v = self.superview ?? self
         
-        let rect = topViewController.view.convertRect(v.frame, fromView: self)
+        let rect = topViewController.view.convert(v.frame, from: self)
         let maxY = rect.origin.y + self.bounds.height
         
         let diff =  keyboardRect.origin.y - maxY
         
-        UIView.animateWithDuration(0.3) {
+        UIView.animate(withDuration: 0.3, animations: {
             if diff < 0 {
-                topViewController.view.transform = CGAffineTransformMakeTranslation(0.0, diff - 10.0)
+                topViewController.view.transform = CGAffineTransform(translationX: 0.0, y: diff - 10.0)
             } else {
-                topViewController.view.transform = CGAffineTransformIdentity
+                topViewController.view.transform = CGAffineTransform.identity
             }
-        }
+        }) 
         
         
     }
     
-    public func keyboardWillHide(notification: NSNotification) {
+    open func keyboardWillHide(_ notification: Notification) {
         
         guard let topViewController: UIViewController = UIViewController.topViewController else {
             return
         }
         
-        UIView.animateWithDuration(0.3) {
-            topViewController.view.transform = CGAffineTransformIdentity
-        }
+        UIView.animate(withDuration: 0.3, animations: {
+            topViewController.view.transform = CGAffineTransform.identity
+        }) 
     }
     
-    override public func hitTest(point: CGPoint, withEvent event: UIEvent?) -> UIView? {
-        let view = super.hitTest(point, withEvent: event)
-        let isFirstResponder = self.isFirstResponder()
+    override open func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        let isFirstResponder = self.isFirstResponder
         if isFirstResponder && view == nil {
             endEditing(true)
-            onLostFocus?(keyboardAwareTextField: self)
-            NSNotificationCenter.defaultCenter().postNotificationName(CDKeyboardAwareTextFieldLostFocusNotification, object: nil, userInfo: ["sender": self])
+            onLostFocus?(self)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: CDKeyboardAwareTextFieldLostFocusNotification), object: nil, userInfo: ["sender": self])
         }
         return view
         

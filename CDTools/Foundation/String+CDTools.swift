@@ -17,16 +17,16 @@ public extension String {
         }
     }
     
-    public func replace(oldString: String, withNew replacmentString: String) -> String {
-        return self.stringByReplacingOccurrencesOfString(oldString, withString: replacmentString, options: NSStringCompareOptions.LiteralSearch, range: nil)
+    public func replace(_ oldString: String, withNew replacmentString: String) -> String {
+        return self.replacingOccurrences(of: oldString, with: replacmentString, options: NSString.CompareOptions.literal, range: nil)
     }
     
-    public func replaceCaseInsensitive(oldString: String, withNew replacmentString: String) -> String {
-        return self.stringByReplacingOccurrencesOfString(oldString, withString: replacmentString, options: .CaseInsensitiveSearch, range: nil)
+    public func replaceCaseInsensitive(_ oldString: String, withNew replacmentString: String) -> String {
+        return self.replacingOccurrences(of: oldString, with: replacmentString, options: .caseInsensitive, range: nil)
     }
     
-    public func stringByAppendingPathComponent(component: String) -> String {
-        return self.nsString.stringByAppendingPathComponent(component)
+    public func stringByAppendingPathComponent(_ component: String) -> String {
+        return self.nsString.appendingPathComponent(component)
     }
     
     public var lastPathComponent: String {
@@ -37,22 +37,22 @@ public extension String {
     
     public var stringByDeletingLastPathComponent: String {
         get {
-            return self.nsString.stringByDeletingLastPathComponent
+            return self.nsString.deletingLastPathComponent
         }
     }
     public var stringByDeletingPathExtension: String {
         get {
-            return self.nsString.stringByDeletingPathExtension
+            return self.nsString.deletingPathExtension
         }
     }
     
-    public func stringByAppendingPathExtension(pathExtension: String) -> String? {
-        return self.nsString.stringByAppendingPathExtension(pathExtension)
+    public func stringByAppendingPathExtension(_ pathExtension: String) -> String? {
+        return self.nsString.appendingPathExtension(pathExtension)
         
     }
     
-    public static func sizeOfAttributedString(str: NSAttributedString, maxWidth: CGFloat) -> CGSize {
-        let size = str.boundingRectWithSize(CGSizeMake(maxWidth, 1000), options:(NSStringDrawingOptions.UsesLineFragmentOrigin), context:nil).size
+    public static func sizeOfAttributedString(_ str: NSAttributedString, maxWidth: CGFloat) -> CGSize {
+        let size = str.boundingRect(with: CGSize(width: maxWidth, height: 1000), options:(NSStringDrawingOptions.usesLineFragmentOrigin), context:nil).size
         return size
     }
 

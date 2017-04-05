@@ -33,7 +33,6 @@
 		28A7969F1D8155AA00907327 /* UIView+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796981D8155AA00907327 /* UIView+CDTools.swift */; };
 		28A796A91D8155BC00907327 /* Array+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A11D8155BC00907327 /* Array+CDTools.swift */; };
 		28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A21D8155BC00907327 /* CDAppCache.swift */; };
-		28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A31D8155BC00907327 /* CDDispatch.swift */; };
 		28A796AC1D8155BC00907327 /* CDRegEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A41D8155BC00907327 /* CDRegEx.swift */; };
 		28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A61D8155BC00907327 /* NSURL+CDTools.swift */; };
 		28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A796A71D8155BC00907327 /* String+CDTools.swift */; };
@@ -82,7 +81,6 @@
 		28A796981D8155AA00907327 /* UIView+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+CDTools.swift"; path = "UI/UIView+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A11D8155BC00907327 /* Array+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Array+CDTools.swift"; path = "Foundation/Array+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A21D8155BC00907327 /* CDAppCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDAppCache.swift; path = Foundation/CDAppCache.swift; sourceTree = "<group>"; };
-		28A796A31D8155BC00907327 /* CDDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDDispatch.swift; path = Foundation/CDDispatch.swift; sourceTree = "<group>"; };
 		28A796A41D8155BC00907327 /* CDRegEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDRegEx.swift; path = Foundation/CDRegEx.swift; sourceTree = "<group>"; };
 		28A796A61D8155BC00907327 /* NSURL+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSURL+CDTools.swift"; path = "Foundation/NSURL+CDTools.swift"; sourceTree = "<group>"; };
 		28A796A71D8155BC00907327 /* String+CDTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+CDTools.swift"; path = "Foundation/String+CDTools.swift"; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				2844EBFB1D82AFD300A8F164 /* CDFileManager.swift */,
 				28A796A11D8155BC00907327 /* Array+CDTools.swift */,
 				28A796A21D8155BC00907327 /* CDAppCache.swift */,
-				28A796A31D8155BC00907327 /* CDDispatch.swift */,
 				28A796A41D8155BC00907327 /* CDRegEx.swift */,
 				28A796A61D8155BC00907327 /* NSURL+CDTools.swift */,
 				28A796A71D8155BC00907327 /* String+CDTools.swift */,
@@ -274,11 +271,11 @@
 				TargetAttributes = {
 					281429961D8151FE00F48404 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 					281429A01D8151FE00F48404 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -329,7 +326,6 @@
 				28A796AF1D8155BC00907327 /* String+CDTools.swift in Sources */,
 				2844EC0C1D82B5D300A8F164 /* CDKeyboardAwareTextfield.swift in Sources */,
 				28A7969A1D8155AA00907327 /* CDTableViewCell.swift in Sources */,
-				28A796AB1D8155BC00907327 /* CDDispatch.swift in Sources */,
 				286BFD691DF9507500055CF5 /* CDSpinnerView+CDTools.swift in Sources */,
 				28A796AE1D8155BC00907327 /* NSURL+CDTools.swift in Sources */,
 				28A796AA1D8155BC00907327 /* CDAppCache.swift in Sources */,
@@ -484,7 +480,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -502,7 +498,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDTools;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -513,7 +509,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -524,7 +520,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.christiandeckertapps.CDToolsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

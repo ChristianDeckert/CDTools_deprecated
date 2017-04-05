@@ -23,7 +23,7 @@ class CDToolsTests: XCTestCase {
     
     func testDispatch() {
 
-        DispatchQueue(preferredQueue: .PriorityBackground, preferredDelay: 0.4).dispatch {
+        DispatchQueue(preferredQueue: .priorityBackground, preferredDelay: 0.4).dispatch {
             print("do work")
             
             }.then { successful in
@@ -35,7 +35,7 @@ class CDToolsTests: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

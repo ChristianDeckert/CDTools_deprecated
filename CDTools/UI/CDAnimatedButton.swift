@@ -10,59 +10,59 @@ import Foundation
 import UIKit
 
 public enum CDAnimatedButtonCallbackFireOptions: Int {
-    case Immediately
-    case AfterFirstHalf
-    case AfterSecondHalf
+    case immediately
+    case afterFirstHalf
+    case afterSecondHalf
 }
 
 
-public typealias CDAnimatedButtonCallback = (animatedButton: CDAnimatedButton?) -> Void
+public typealias CDAnimatedButtonCallback = (_ animatedButton: CDAnimatedButton?) -> Void
 
 
-public class CDAnimatedButton: UIButton {
+open class CDAnimatedButton: UIButton {
     
-    public var onTapCallback: CDAnimatedButtonCallback?
-    public var preferredShrinkedSize: CGSize = CGSize(width: 0.95, height: 0.95)
-    public var customAnimationsFirstHalf: (Void -> Void)?
-    public var customAnimationsSecondHalf: (Void -> Void)?
-    public var callbackFireOptions: CDAnimatedButtonCallbackFireOptions = .AfterFirstHalf
+    open var onTapCallback: CDAnimatedButtonCallback?
+    open var preferredShrinkedSize: CGSize = CGSize(width: 0.95, height: 0.95)
+    open var customAnimationsFirstHalf: ((Void) -> Void)?
+    open var customAnimationsSecondHalf: ((Void) -> Void)?
+    open var callbackFireOptions: CDAnimatedButtonCallbackFireOptions = .afterFirstHalf
     
-    private var customView: UIView?
+    fileprivate var customView: UIView?
     
-    public var icon: UIImage? {
+    open var icon: UIImage? {
         didSet {
             updateCustomView()
         }
     }
     
-    public var text: String? {
+    open var text: String? {
         didSet {
             updateCustomView()
         }
     }
     
-    public var textColor: UIColor? {
+    open var textColor: UIColor? {
         didSet {
             updateCustomView()
         }
     }
     
-    public var rippleColor: UIColor? = UIColor.blackColor().colorWithAlphaComponent(1.0)
+    open var rippleColor: UIColor? = UIColor.black.withAlphaComponent(1.0)
     
-    private func updateCustomView() {
+    fileprivate func updateCustomView() {
         self.customView?.removeFromSuperview()
         if let text = self.text {
             let label = UILabel()
-            label.backgroundColor = UIColor.clearColor()
+            label.backgroundColor = UIColor.clear
             label.textColor = self.textColor ?? self.tintColor
             label.text = text
-            label.textAlignment = .Center
+            label.textAlignment = .center
             label.minimumScaleFactor = 0.2
             label.adjustsFontSizeToFitWidth = true
             customView = label
         } else {
             let imageView = UIImageView()
-            imageView.backgroundColor = UIColor.clearColor()
+            imageView.backgroundColor = UIColor.clear
             let image = self.icon
             imageView.image = image
             imageView.contentMode = self.contentMode
@@ -79,56 +79,56 @@ public class CDAnimatedButton: UIButton {
     }
     
     
-    public override func didMoveToSuperview() {
+    open override func didMoveToSuperview() {
         super.didMoveToSuperview()
         guard nil != self.superview else {
             return
         }
         
-        self.addTarget(self, action: #selector(onTap(_:)), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(onTap(_:)), for: .touchUpInside)
         
     }
     
-    public func onTap(sender: AnyObject?) {
+    open func onTap(_ sender: AnyObject?) {
         
-        self.userInteractionEnabled = false
+        self.isUserInteractionEnabled = false
         
-        if self.callbackFireOptions == .Immediately {
-            self.onTapCallback?(animatedButton: self)
+        if self.callbackFireOptions == .immediately {
+            self.onTapCallback?(self)
         }
         
         let backgroundColor = self.backgroundColor
         let duration: Double = 0.3
-        UIView.animateWithDuration(duration/2, animations: {
-            self.transform = CGAffineTransformMakeScale(self.preferredShrinkedSize.width, self.preferredShrinkedSize.height)
+        UIView.animate(withDuration: duration/2, animations: {
+            self.transform = CGAffineTransform(scaleX: self.preferredShrinkedSize.width, y: self.preferredShrinkedSize.height)
             self.customAnimationsFirstHalf?()
             self.backgroundColor = self.rippleColor
             
-        }) { complete in
+        }, completion: { complete in
             
-            if self.callbackFireOptions == .AfterFirstHalf {
-                self.onTapCallback?(animatedButton: self)
+            if self.callbackFireOptions == .afterFirstHalf {
+                self.onTapCallback?(self)
             }
             
-            UIView.animateWithDuration(duration/2, animations: {
-                self.transform = CGAffineTransformIdentity
+            UIView.animate(withDuration: duration/2, animations: {
+                self.transform = CGAffineTransform.identity
                 self.customAnimationsSecondHalf?()
                 self.backgroundColor = backgroundColor
                 
-            }) { complete in
-                self.userInteractionEnabled = true
-                if self.callbackFireOptions == .AfterSecondHalf {
-                    self.onTapCallback?(animatedButton: self)
+            }, completion: { complete in
+                self.isUserInteractionEnabled = true
+                if self.callbackFireOptions == .afterSecondHalf {
+                    self.onTapCallback?(self)
                 }
-            }
-        }
+            }) 
+        }) 
     }
     
-    public func updateImage(newImage image: UIImage?) {
+    open func updateImage(newImage image: UIImage?) {
         guard let customView = self.subviews.first as? UIImageView else {
             return
         }
-        UIView.transitionWithView(customView, duration: 0.4, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+        UIView.transition(with: customView, duration: 0.4, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
             customView.image = image
         }, completion: nil)
         
