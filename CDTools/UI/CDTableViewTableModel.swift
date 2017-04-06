@@ -66,12 +66,11 @@ open class CDTableViewModelSection<T: Equatable> {
 
         var index = 0
         for currentItem in self.items {
-            if let c: T = currentItem.item {
-                if c == item {
-                    return index
-                }
-                index += 1
+            let c: T = currentItem.item
+            if c == item {
+                return index
             }
+            index += 1            
         }
         
         return nil
