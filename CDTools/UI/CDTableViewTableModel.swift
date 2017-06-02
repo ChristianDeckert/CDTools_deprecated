@@ -1,6 +1,6 @@
 //
 //  CDTableViewTableModel.swift
-//  
+//
 //
 //  Created by Christian Deckert on 21.10.16.
 //  Copyright (c) 2014 Christian Deckert GmbH. All rights reserved.
@@ -63,21 +63,21 @@ open class CDTableViewModelSection<T: Equatable> {
     }
     
     open func indexOf(_ item: T) -> Int? {
-
+        
         var index = 0
         for currentItem in self.items {
             let c: T = currentItem.item
             if c == item {
                 return index
             }
-            index += 1            
+            index += 1
         }
         
         return nil
     }
     
     /// Append a new item of type T
-    open func append(_ item: T) -> CDTableViewModelItem<T> {
+    @discardableResult open func append(_ item: T) -> CDTableViewModelItem<T> {
         let newItem = CDTableViewModelItem(item: item)
         self.items.append(newItem)
         return newItem
@@ -245,7 +245,7 @@ open class CDTableViewTableModel<T: Equatable> {
             let section = self.sections[sectionNumber]
             
             return section.numberOfItems
-      }
+        }
         return 0
     }
     
@@ -305,9 +305,9 @@ open class CDTableViewTableModel<T: Equatable> {
         return self.enumerate(section: 0, callback: callback)
     }
     
-    open func enumerate<U>(section sectionNumber: Int, callback: (_ index: Int, _ item: U) -> Void) -> Bool {
+    @discardableResult open func enumerate<U>(section sectionNumber: Int, callback: (_ index: Int, _ item: U) -> Void) -> Bool {
         
-        guard let section = self.sectionAt(0) else {
+        guard let section = self.sectionAt(sectionNumber) else {
             return false
         }
         
@@ -318,7 +318,7 @@ open class CDTableViewTableModel<T: Equatable> {
     }
     
     open func isExpanded(_ atIndex: Int, inSection: Int) -> Bool {
-
+        
         if let section = self.sectionAt(inSection) {
             return section.isExpanded(atIndex)
         }
@@ -346,7 +346,7 @@ open class CDTableViewTableModel<T: Equatable> {
         if let section = self.sectionAt(indexPath.section) {
             return section.level(atIndex: indexPath.row)
         }
-
+        
         return 0
     }
     

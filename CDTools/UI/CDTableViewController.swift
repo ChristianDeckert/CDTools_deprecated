@@ -1,6 +1,6 @@
 //
 //  CDTableViewController.swift
-//  
+//
 //
 //  Created by Christian Deckert on 22.10.16.
 //  Copyright (c) 2014 Christian Deckert GmbH. All rights reserved.
@@ -35,7 +35,7 @@ open class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     }
     
     var tableModel = CDTableViewTableModel<T>()
-
+    
     weak var weakTableViewController: CDTableViewController? //STRONG TABLEVIEW TO BE DEFINED IN SUBCLASSES
     
     public init(CDTableControllertableModel tableModel: CDTableControllertableModel?) {
@@ -108,7 +108,7 @@ open class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
         let cell = weakTableViewController?.weakTableView?.cellForRow(at: indexPath)
         cell?.selectedBackgroundView = selectedBackgroundView
     }
-
+    
 }
 
 /// A custom view controller with a tableview embedded
@@ -254,13 +254,13 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
             controller.dimsBackgroundDuringPresentation = false
             controller.searchBar.searchBarStyle = .minimal
             controller.searchBar.sizeToFit()
-
+            
             self.weakTableView?.tableHeaderView = controller.searchBar
             
             return controller
         }()
-
-    
+        
+        
     }
     
     open func updateSearchResults(for searchController: UISearchController) {
