@@ -122,7 +122,7 @@ open class CDAnimatedBarButtonItem: UIBarButtonItem {
         }
     }
     
-    @IBInspectable open var frame: CGRect? {
+    open var frame: CGRect? {
         set {
             self.options.frame = newValue
             updateUI()
@@ -313,3 +313,4 @@ open class CDAnimatedBarButtonItem: UIBarButtonItem {
         
     }
 }
+

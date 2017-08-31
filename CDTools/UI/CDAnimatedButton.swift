@@ -17,17 +17,20 @@ public enum CDAnimatedButtonCallbackFireOptions: Int {
 
 
 public typealias CDAnimatedButtonCallback = (_ animatedButton: CDAnimatedButton?) -> Void
-
+public typealias CDAnimatedButtonAnimationBlock = (() -> Void)
 
 open class CDAnimatedButton: UIButton {
     
     open var onTapCallback: CDAnimatedButtonCallback?
     open var preferredShrinkedSize: CGSize = CGSize(width: 0.95, height: 0.95)
-    open var customAnimationsFirstHalf: ((Void) -> Void)?
-    open var customAnimationsSecondHalf: ((Void) -> Void)?
+    open var customAnimationsFirstHalf: CDAnimatedButtonAnimationBlock?
+    open var customAnimationsSecondHalf: CDAnimatedButtonAnimationBlock?
     open var callbackFireOptions: CDAnimatedButtonCallbackFireOptions = .afterFirstHalf
     
-    fileprivate var customView: UIView?
+    public var customView: UIView?
+    public var customImageView: UIImageView? {
+        return subviews.first as? UIImageView
+    }
     
     open var icon: UIImage? {
         didSet {
@@ -75,7 +78,7 @@ open class CDAnimatedButton: UIButton {
         }
         customView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(customView)
-        NSLayoutConstraint.fullscreenLayoutForView(viewToLayout: customView, inView: self)
+        NSLayoutConstraint.embed(view: customView, in: self)
     }
     
     
@@ -85,8 +88,7 @@ open class CDAnimatedButton: UIButton {
             return
         }
         
-        self.addTarget(self, action: #selector(onTap(_:)), for: .touchUpInside)
-        
+        self.addTarget(self, action: #selector(onTap(_:)), for: .touchUpInside)   
     }
     
     open func onTap(_ sender: AnyObject?) {
@@ -120,8 +122,8 @@ open class CDAnimatedButton: UIButton {
                 if self.callbackFireOptions == .afterSecondHalf {
                     self.onTapCallback?(self)
                 }
-            }) 
-        }) 
+            })
+        })
     }
     
     open func updateImage(newImage image: UIImage?) {

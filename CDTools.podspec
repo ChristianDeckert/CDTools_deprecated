@@ -5,7 +5,7 @@ s.ios.deployment_target = '9.0'
 s.name = "CDTools"
 s.summary = "My swift 3 tool box."
 s.requires_arc = true
-s.version = "2.0.1"
+s.version = "2.0.2"
 #s.license = { :type => "MIT", :file => "CDTools/LICENSE" }
 s.license      = {
 :type => 'MIT',

@@ -15,8 +15,15 @@ public extension NSLayoutConstraint {
     
     
     /// Embedd a view
-    public class func fullscreenLayoutForView(viewToLayout view: UIView, inView parentView: UIView, insets: UIEdgeInsets = UIEdgeInsets.zero) {
-
+    
+    public class func embed(view: UIView, in parentView: UIView, insets: UIEdgeInsets = .zero) {
+        fullscreenLayout(forView: view, in: parentView, insets: insets)
+    }
+    
+    public class func fullscreenLayout(forView view: UIView, in parentView: UIView, insets: UIEdgeInsets = UIEdgeInsets.zero) {
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: -1.0 * insets.left)
         
         let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: -1.0 * insets.right)
@@ -28,13 +35,11 @@ public extension NSLayoutConstraint {
         let layoutContraints = [leadingConstraint, trailingConstraint, topConstraint, bottomConstraint]
         parentView.addConstraints(layoutContraints)
         
-        view.frame = parentView.bounds
-
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
-    public class func topEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, height: CGFloat) {
+    public class func topEdgeLayout(forView view: UIView, in parentView: UIView, height: CGFloat) {
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         
@@ -46,16 +51,14 @@ public extension NSLayoutConstraint {
         
         let layoutContraints = [leadingConstraint, trailingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
-    public class func rightEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, width: CGFloat) {
-        NSLayoutConstraint.rightEdgeLayoutForView(viewToLayout: view, inView: parentView, marginTop: 0.0, marginBottom: 0.0, marginRight: 0.0, width: width)
+    public class func rightEdgeLayout(forView view: UIView, in parentView: UIView, width: CGFloat) {
+        NSLayoutConstraint.rightEdgeLayout(forView: view, in: parentView, marginTop: 0.0, marginBottom: 0.0, marginRight: 0.0, width: width)
     }
     
-    public class func rightEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginRight: CGFloat, width: CGFloat) {
+    public class func rightEdgeLayout(forView view: UIView, in parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginRight: CGFloat, width: CGFloat) {
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: marginBottom)
         
@@ -67,18 +70,14 @@ public extension NSLayoutConstraint {
         
         let layoutContraints = [bottomConstraint, trailingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
-        
-        
     }
     
-    public class func leftEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, width: CGFloat) {
-        NSLayoutConstraint.leftEdgeLayoutForView(viewToLayout: view, inView: parentView, marginTop: 0.0, marginBottom: 0.0, marginLeft: 0.0, width: width)
+    public class func leftEdgeLayout(forView view: UIView, in parentView: UIView, width: CGFloat) {
+        NSLayoutConstraint.leftEdgeLayout(forView: view, in: parentView, marginTop: 0.0, marginBottom: 0.0, marginLeft: 0.0, width: width)
     }
     
-    public class func leftEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginLeft: CGFloat, width: CGFloat) {
+    public class func leftEdgeLayout(forView view: UIView, in parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginLeft: CGFloat, width: CGFloat) {
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: marginLeft)
         
@@ -90,9 +89,6 @@ public extension NSLayoutConstraint {
         
         let layoutContraints = [bottomConstraint, leadingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
     

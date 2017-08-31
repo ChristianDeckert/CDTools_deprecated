@@ -239,9 +239,9 @@ open class CDCircularProgressView: UIView {
         return progressView
     }
     
-    open override func fadeIn(_ completion: ((Void) -> (Void))?) {
+    open override func fadeIn(completion: (() -> (Void))?) {
     
-        super.fadeWithDuration(0.4, alpha: 1.0, delay: 0.0, completion: { [weak self] () -> (Void) in
+        super.fade(duration: 0.4, alpha: 1.0, delay: 0.0, completion: { [weak self] () -> (Void) in
             if let s = self {
                 s.animate { (Void) -> (Void) in
                     
@@ -250,7 +250,7 @@ open class CDCircularProgressView: UIView {
         })
         
     }
-    fileprivate func animate(_ completion: ((Void) -> (Void))!) {
+    fileprivate func animate(completion: @escaping (() -> (Void))) {
         
         CATransaction.begin()
         let growAnimation =  CABasicAnimation(keyPath: "strokeEnd")

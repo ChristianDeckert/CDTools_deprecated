@@ -81,7 +81,7 @@ open class CDSpinnerViewAppearance {
 
 public extension CDSpinnerView {
     
-    public func setImage(_ newImage: UIImage?, forCellAtIndex index: Int, animated: Bool = true) {
+    public func setImage(newImage: UIImage?, forCellAtIndex index: Int, animated: Bool = true) {
         
         guard index < items.count && index >= 0 else { return }
         
@@ -191,7 +191,7 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
             self.layer.shadowOpacity = 0
             self.clipsToBounds = true
         }
-        reloadData(false)
+        reloadData(animated: false)
         
     }
     
@@ -219,7 +219,7 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         return super.hitTest(point, with: event)
     }
     
-    open func reloadData(_ animated: Bool = true) {
+    open func reloadData(animated: Bool = true) {
         
         if animated {
             
@@ -261,7 +261,7 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         }) 
     }
     
-    open func dismiss(_ completion: ((Void)->Void)? = nil) {
+    open func dismiss(completion: ((Void)->Void)? = nil) {
         if isDismissing {
             return
         }
@@ -386,7 +386,7 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
             
             let time = DispatchTime.now() + Double(Int64(0.075 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: time, execute: {
-                spinnerView.selectIfNeeded(false)
+                spinnerView.selectIfNeeded(animated: false)
             })
             
             return spinnerView
@@ -395,7 +395,7 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
         return nil
     }
     
-    func selectIfNeeded(_ animated: Bool = true) {
+    func selectIfNeeded(animated: Bool = true) {
         if let selectedItemIndex = CDSpinnerViewAppearance.selectedItemIndex, selectedItemIndex < items.count {
             tableView.scrollToRow(at: IndexPath(row: selectedItemIndex, section: 0), at: .top, animated: animated)
         }
