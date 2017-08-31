@@ -1,17 +1,16 @@
 //
 //  UICollectionViewCell+CDTools.swift
-//  SOS
+//  CDTools
 //
 //  Created by Christian Deckert on 25.11.16.
 //  Copyright © 2017 Christian Deckert
 //
 import Foundation
 import UIKit
-import CDTools
 
 public extension UICollectionViewCell {
     
-    public class var cellReuseIdentifier: String {
+    open class var cellReuseIdentifier: String {
         let id = String(NSStringFromClass(self.classForCoder()).components(separatedBy: ".")[1])
         return id!
     }
@@ -19,15 +18,15 @@ public extension UICollectionViewCell {
 }
 
 
-public class CDCollectionViewCell: UICollectionViewCell {
-    public var viewModel: CDViewModelBase? {
+open class CDCollectionViewCell: UICollectionViewCell {
+    open var viewModel: CDViewModelBase? {
         didSet {
             viewModelUpdated()
         }
     }
     
     fileprivate var _indexPath: IndexPath = IndexPath()
-    public var indexPath: IndexPath {
+    open var indexPath: IndexPath {
         set {
             _indexPath = IndexPath(item: newValue.item, section: newValue.section)
         }
@@ -36,18 +35,18 @@ public class CDCollectionViewCell: UICollectionViewCell {
             return _indexPath
         }
     }
-
+    
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.indexPath = IndexPath(item: 0, section: 0)
-        commonInit()        
+        commonInit()
     }
     
-    fileprivate func commonInit() {
+    open func commonInit() {
         
     }
     
-    public func viewModelUpdated() {
+    open func viewModelUpdated() {
         self.transform = CGAffineTransform.identity
     }
     

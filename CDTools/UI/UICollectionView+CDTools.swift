@@ -1,6 +1,6 @@
 //
 //  UICollectionView+CDTools.swift
-//  SOS
+//  CDTools
 //
 //  Created by Christian Deckert on 25.11.16.
 //  Copyright © 2017 Christian Deckert
@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import CDTools
 
 public extension UINib {
     

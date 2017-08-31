@@ -1,6 +1,6 @@
 //
 //  CDViewModelBase.swift
-//  sos
+//  CDTools
 //
 //  Created by Deckert on 01.05.17.
 //  Copyright © 2017 Christian Deckert. All rights reserved.
