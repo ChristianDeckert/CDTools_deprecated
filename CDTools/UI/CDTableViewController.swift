@@ -1,6 +1,6 @@
 //
 //  CDTableViewController.swift
-//  
+//
 //
 //  Created by Christian Deckert on 22.10.16.
 //  Copyright (c) 2014 Christian Deckert GmbH. All rights reserved.
@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 public extension UINib {
-    public static func nibForCDTableViewCell(cell: CDTableViewCell.Type, bundle: NSBundle? = nil) -> UINib {
+    public static func nibForCDTableViewCell(_ cell: CDTableViewCell.Type, bundle: Bundle? = nil) -> UINib {
         return UINib(nibName: cell.cellReuseIdentifier(), bundle: bundle)
     }
 }
 
 public extension UITableView {
-    public func registerCDTableViewCell(cell: CDTableViewCell.Type, bundle: NSBundle? = nil) {
-        self.registerNib(UINib.nibForCDTableViewCell(cell, bundle: bundle ?? NSBundle(forClass: cell.classForCoder())), forCellReuseIdentifier: cell.cellReuseIdentifier())
+    public func registerCDTableViewCell(_ cell: CDTableViewCell.Type, bundle: Bundle? = nil) {
+        self.register(UINib.nibForCDTableViewCell(cell, bundle: bundle ?? Bundle(for: cell.classForCoder())), forCellReuseIdentifier: cell.cellReuseIdentifier())
     }
 }
 
@@ -25,7 +25,7 @@ public protocol CDTableControllertableModel: NSObjectProtocol {
     func CDTableControllerGetTableView() -> UITableView?
 }
 
-public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
+open class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     
     weak var cdTableControllertableModel: CDTableControllertableModel?
     var tableView: UITableView? {
@@ -35,7 +35,7 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     }
     
     var tableModel = CDTableViewTableModel<T>()
-
+    
     weak var weakTableViewController: CDTableViewController? //STRONG TABLEVIEW TO BE DEFINED IN SUBCLASSES
     
     public init(CDTableControllertableModel tableModel: CDTableControllertableModel?) {
@@ -60,13 +60,13 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
     }
     
     // MARK: - UITableViewDelegate & -tableModel
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfItems = self.tableModel.numberOfItemsInSection(section)
         return numberOfItems
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: CDTableViewCell = tableView.dequeueReusableCellWithIdentifier(CDTableViewCell.cellReuseIdentifier()) as! CDTableViewCell
+    open func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell: CDTableViewCell = tableView.dequeueReusableCell(withIdentifier: CDTableViewCell.cellReuseIdentifier()) as! CDTableViewCell
         
         if let item = self.tableModel.item(atIndex: indexPath) as? NSObject {
             cell.textLabel?.text = item.description
@@ -77,15 +77,15 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
         return cell
     }
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             return 44.0
         }
         
         return 64.0
     }
     
-    public func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cdCell = cell as? CDTableViewCell else {
             return
         }
@@ -93,22 +93,22 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
         cdCell.indexPath = indexPath
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return self.tableModel.numberOfSections
     }
     
-    public func hightlightSelectedBackgroundView(indexPath: NSIndexPath) -> Void {
+    open func hightlightSelectedBackgroundView(_ indexPath: IndexPath) -> Void {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = self.weakTableViewController?.selectedBackgroundViewColor
-        let cell = weakTableViewController?.weakTableView?.cellForRowAtIndexPath(indexPath)
+        let cell = weakTableViewController?.weakTableView?.cellForRow(at: indexPath)
         cell?.selectedBackgroundView = selectedBackgroundView
     }
-
+    
 }
 
 /// A custom view controller with a tableview embedded
@@ -118,76 +118,76 @@ public class CDTableController<T: Equatable>: NSObject, UITableViewDelegate  {
 /// - Type safety data
 /// - Automatically returns number of sections/rows by implementing UITableViewtableModel / UITableViewDelegate
 //public class CDTableViewController<T: Equatable>: CDBaseViewController, UITableViewtableModel, UITableViewDelegate,
-public class CDTableViewController: CDBaseViewController, UITableViewDataSource, UITableViewDelegate,
+open class CDTableViewController: CDBaseViewController, UITableViewDataSource, UITableViewDelegate,
 UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTableControllertableModel {
     
-    public var selectedBackgroundViewEnabled: Bool = true
-    public var selectedBackgroundViewColor = UIColor.whiteColor()
-    public var cdTableController = CDTableController<NSObject>(CDTableControllertableModel: nil)
-    public var tableModel: CDTableViewTableModel<NSObject> {
+    open var selectedBackgroundViewEnabled: Bool = true
+    open var selectedBackgroundViewColor = UIColor.white
+    open var cdTableController = CDTableController<NSObject>(CDTableControllertableModel: nil)
+    open var tableModel: CDTableViewTableModel<NSObject> {
         get {
             return self.cdTableController.tableModel
         }
     }
     
-    public var searchController: UISearchController?
+    open var searchController: UISearchController?
     
-    public weak var weakTableView: UITableView? //STRONG TABLEVIEW TO BE DEFINED IN SUBCLASSES (Storyboard) AN SET WEAK VAR IN LOADVIEW()
-    public var refreshControl: UIRefreshControl?
+    open weak var weakTableView: UITableView? //STRONG TABLEVIEW TO BE DEFINED IN SUBCLASSES (Storyboard) AN SET WEAK VAR IN LOADVIEW()
+    open var refreshControl: UIRefreshControl?
     
     
     // MARK: - Life cycle
     
-    public override func loadView() {
+    open override func loadView() {
         super.loadView()
         self.cdTableController.cdTableControllertableModel = self
         findTableView()
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         self.cdTableController.weakTableViewController = self
         if let tv = self.weakTableView {
             tv.delegate = self
             tv.dataSource = self
-            tv.separatorInset = UIEdgeInsetsZero
-            tv.separatorColor = UIColor.clearColor()
+            tv.separatorInset = UIEdgeInsets.zero
+            tv.separatorColor = UIColor.clear
         }
         
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
     
     // MARK: - Batch Updates
     
-    public func insertAnimated(sectionIndizes: NSIndexSet, rowIndizes: Array<NSIndexPath>, animation: UITableViewRowAnimation) -> Void {
+    open func insertAnimated(_ sectionIndizes: IndexSet, rowIndizes: Array<IndexPath>, animation: UITableViewRowAnimation) -> Void {
         
         if let tv = self.weakTableView {
             tv.beginUpdates()
             
             if sectionIndizes.count > 0 {
-                tv.insertSections(sectionIndizes, withRowAnimation: animation)
+                tv.insertSections(sectionIndizes, with: animation)
             }
             if !rowIndizes.isEmpty {
-                tv.insertRowsAtIndexPaths(rowIndizes, withRowAnimation: animation)
+                tv.insertRows(at: rowIndizes, with: animation)
             }
             tv.endUpdates()
         }
     }
     
-    public func deleteAnimated(sectionIndizes: NSIndexSet, rowIndizes: Array<NSIndexPath>, animation: UITableViewRowAnimation) -> Void {
+    open func deleteAnimated(_ sectionIndizes: IndexSet, rowIndizes: Array<IndexPath>, animation: UITableViewRowAnimation) -> Void {
         
         if let tv = self.weakTableView {
             tv.beginUpdates()
             
             if sectionIndizes.count > 0 {
-                tv.deleteSections(sectionIndizes, withRowAnimation: animation)
+                tv.deleteSections(sectionIndizes, with: animation)
             }
             if !rowIndizes.isEmpty {
-                tv.deleteRowsAtIndexPaths(rowIndizes, withRowAnimation: animation)
+                tv.deleteRows(at: rowIndizes, with: animation)
             }
             tv.endUpdates()
         }
@@ -195,11 +195,11 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     
     // MARK: - Refresh Control
     
-    public func addRefreshControl() {
+    open func addRefreshControl() {
         
         let refreshControl = UIRefreshControl()
         self.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshAction), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: UIControlEvents.valueChanged)
         if let tableView = self.weakTableView {
             tableView.addSubview(refreshControl)
         }
@@ -208,32 +208,32 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     
     // MARK: - Refresh Control
     
-    public func refreshAction() {
+    open func refreshAction() {
         self.refreshControl?.endRefreshing()
     }
     
     // MARK: - UITableViewDelegate & -tableModel
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return self.cdTableController.tableView(tableView, heightForRowAtIndexPath: indexPath)
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return self.cdTableController.tableView(tableView, heightForRowAt: indexPath)
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cdTableController.tableView(tableView, numberOfRowsInSection: section)
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return self.cdTableController.numberOfSectionsInTableView(tableView)
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return self.cdTableController.tableView(tableView, cellForRowAtIndexPath: indexPath)
     }
     
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.self.cdTableController.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        self.self.cdTableController.tableView(tableView, didSelectRowAt: indexPath)
         if self.selectedBackgroundViewEnabled {
             self.self.cdTableController.hightlightSelectedBackgroundView(indexPath)
         }
@@ -241,10 +241,10 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
     
     // MARK: - Search Controller
     
-    public func addSearchController() {
+    open func addSearchController() {
         
         let uselessView = UIView()
-        uselessView.backgroundColor = UIColor.clearColor()
+        uselessView.backgroundColor = UIColor.clear
         self.weakTableView?.backgroundView = uselessView
         
         self.searchController = {
@@ -252,29 +252,29 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
             controller.searchResultsUpdater = self
             controller.definesPresentationContext = true
             controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.searchBarStyle = .Minimal
+            controller.searchBar.searchBarStyle = .minimal
             controller.searchBar.sizeToFit()
-
+            
             self.weakTableView?.tableHeaderView = controller.searchBar
             
             return controller
         }()
-
-    
+        
+        
     }
     
-    public func updateSearchResultsForSearchController(searchController: UISearchController) {
+    open func updateSearchResults(for searchController: UISearchController) {
     }
     
     // MARK: - CDTableControllertableModel
     
-    public func CDTableControllerGetTableView() -> UITableView? {
+    open func CDTableControllerGetTableView() -> UITableView? {
         return self.weakTableView
     }
     
     // MARK: - Other
     
-    private func findTableView() {
+    fileprivate func findTableView() {
         
         guard nil == self.weakTableView else {
             return
@@ -284,7 +284,7 @@ UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate, CDTabl
             if let tableView = view as? UITableView {
                 self.weakTableView = tableView
                 
-                tableView.registerClass(CDTableViewCell.self, forCellReuseIdentifier: CDTableViewCell.cellReuseIdentifier())
+                tableView.register(CDTableViewCell.self, forCellReuseIdentifier: CDTableViewCell.cellReuseIdentifier())
                 break;
             }
         }

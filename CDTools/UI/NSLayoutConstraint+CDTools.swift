@@ -15,84 +15,80 @@ public extension NSLayoutConstraint {
     
     
     /// Embedd a view
-    public class func fullscreenLayoutForView(viewToLayout view: UIView, inView parentView: UIView, insets: UIEdgeInsets = UIEdgeInsetsZero) {
-
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -1.0 * insets.left)
+    
+    public class func embed(view: UIView, in parentView: UIView, insets: UIEdgeInsets = .zero) {
+        fullscreenLayout(forView: view, in: parentView, insets: insets)
+    }
+    
+    public class func fullscreenLayout(forView view: UIView, in parentView: UIView, insets: UIEdgeInsets = UIEdgeInsets.zero) {
         
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: -1.0 * insets.right)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: -1.0 * insets.top)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: -1.0 * insets.left)
         
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -1.0 * insets.bottom)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: -1.0 * insets.right)
+        
+        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: -1.0 * insets.top)
+        
+        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: -1.0 * insets.bottom)
         
         let layoutContraints = [leadingConstraint, trailingConstraint, topConstraint, bottomConstraint]
         parentView.addConstraints(layoutContraints)
         
-        view.frame = parentView.bounds
-
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
-    public class func topEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, height: CGFloat) {
+    public class func topEdgeLayout(forView view: UIView, in parentView: UIView, height: CGFloat) {
         
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: 0)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: 0)
         
-        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: 0)
         
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: height))
+        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: 0)
+        
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: height))
         
         let layoutContraints = [leadingConstraint, trailingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
-    public class func rightEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, width: CGFloat) {
-        NSLayoutConstraint.rightEdgeLayoutForView(viewToLayout: view, inView: parentView, marginTop: 0.0, marginBottom: 0.0, marginRight: 0.0, width: width)
+    public class func rightEdgeLayout(forView view: UIView, in parentView: UIView, width: CGFloat) {
+        NSLayoutConstraint.rightEdgeLayout(forView: view, in: parentView, marginTop: 0.0, marginBottom: 0.0, marginRight: 0.0, width: width)
     }
     
-    public class func rightEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginRight: CGFloat, width: CGFloat) {
+    public class func rightEdgeLayout(forView view: UIView, in parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginRight: CGFloat, width: CGFloat) {
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: marginBottom)
+        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: marginBottom)
         
-        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Trailing, multiplier: 1.0, constant: marginRight)
+        let trailingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.trailing, multiplier: 1.0, constant: marginRight)
         
-        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: marginTop)
+        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: marginTop)
         
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: width))
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: width))
         
         let layoutContraints = [bottomConstraint, trailingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
-        
-        
     }
     
-    public class func leftEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, width: CGFloat) {
-        NSLayoutConstraint.leftEdgeLayoutForView(viewToLayout: view, inView: parentView, marginTop: 0.0, marginBottom: 0.0, marginLeft: 0.0, width: width)
+    public class func leftEdgeLayout(forView view: UIView, in parentView: UIView, width: CGFloat) {
+        NSLayoutConstraint.leftEdgeLayout(forView: view, in: parentView, marginTop: 0.0, marginBottom: 0.0, marginLeft: 0.0, width: width)
     }
     
-    public class func leftEdgeLayoutForView(viewToLayout view: UIView, inView parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginLeft: CGFloat, width: CGFloat) {
+    public class func leftEdgeLayout(forView view: UIView, in parentView: UIView, marginTop: CGFloat, marginBottom: CGFloat, marginLeft: CGFloat, width: CGFloat) {
+        view.translatesAutoresizingMaskIntoConstraints = false
         
-        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: marginLeft)
+        let leadingConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.leading, multiplier: 1.0, constant: marginLeft)
         
-        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: marginBottom)
+        let bottomConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.bottom, multiplier: 1.0, constant: marginBottom)
         
-        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: parentView, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: marginTop)
+        let topConstraint = NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: parentView, attribute: NSLayoutAttribute.top, multiplier: 1.0, constant: marginTop)
         
-        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: width))
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: width))
         
         let layoutContraints = [bottomConstraint, leadingConstraint, topConstraint]
         parentView.addConstraints(layoutContraints)
-        
-        parentView.setNeedsLayout()
-        parentView.layoutIfNeeded()
     }
     
     

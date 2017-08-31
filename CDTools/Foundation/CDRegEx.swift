@@ -13,46 +13,45 @@ public enum CDRegExPatterns: String {
     case EmailPattern = "(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$)"
 }
 
-public class CDRegEx: NSObject {
+open class CDRegEx: NSObject {
     
     let internalExpression: NSRegularExpression?
     let pattern: String
     
     public init(pattern: String) {
         self.pattern = pattern
-        self.internalExpression = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive)
+        self.internalExpression = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
         super.init()
     }
     
     public init(pattern: CDRegExPatterns) {
         self.pattern = pattern.rawValue
-        self.internalExpression = try? NSRegularExpression(pattern: self.pattern, options: NSRegularExpressionOptions.CaseInsensitive)
+        self.internalExpression = try? NSRegularExpression(pattern: self.pattern, options: NSRegularExpression.Options.caseInsensitive)
         super.init()
     }
     
-    public func test(input: String) -> Bool {
+    open func test(_ input: String) -> Bool {
         
         if let exp = self.internalExpression {
-            let matches = exp.matchesInString(input, options: NSMatchingOptions(), range:NSMakeRange(0, input.nsString.length))
+            let matches = exp.matches(in: input, options: NSRegularExpression.MatchingOptions(), range:NSMakeRange(0, input.nsString.length))
             return matches.count > 0
         }
         
         return false
     }
     
-    public func replaceOccurances(inString string: String) -> String {
+    open func replaceOccurances(inString string: String) -> String {
         var newString: String = string
-        if let url = string.rangeOfString(self.pattern, options: [.RegularExpressionSearch, .CaseInsensitiveSearch]) {
-            newString.removeRange(url)
+        if let url = string.range(of: self.pattern, options: [.regularExpression, .caseInsensitive]) {
+            newString.removeSubrange(url)
         }
         
-        "" =~ .URLPattern
         return newString
     }
 }
 
 
-infix operator =~ {}
+infix operator =~
 
 public func =~ (input: String, pattern: String) -> Bool {
     return CDRegEx(pattern: pattern).test(input)

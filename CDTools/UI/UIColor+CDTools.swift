@@ -17,7 +17,7 @@ import UIKit
 ///   - b: blue component as `CGFloat` [0-1]
 /// - returns: the new `UIColor` object
 
-public func rgb(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
+public func rgb(_ r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
     return rgba(r, g: g, b: b, a: 1)
 }
 
@@ -29,7 +29,7 @@ public func rgb(r: CGFloat, g: CGFloat, b: CGFloat) -> UIColor {
 ///   - b: blue component as `CGFloat` [0-1]
 ///   - a: alpha component as `CGFloat` [0-1]
 /// - returns: the new `UIColor` object
-public func rgba(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
+public func rgba(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
     return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
 }
 
@@ -51,14 +51,14 @@ public extension UIColor {
         self.init(hexInt: Int(hex) ?? 0)
     }
     
-    public class func colorFromString(colorString: String) -> UIColor? {
-        let components = colorString.componentsSeparatedByString(";")
+    public class func colorFromString(_ colorString: String) -> UIColor? {
+        let components = colorString.components(separatedBy: ";")
         
         var color: UIColor?
         if components.count == 3 {
-            let red: NSString = components[0]
-            let green: NSString = components[1]
-            let blue: NSString = components[2]
+            let red: NSString = components[0] as NSString
+            let green: NSString = components[1] as NSString
+            let blue: NSString = components[2] as NSString
             let r = CGFloat(red.floatValue / 255.0)
             let g = CGFloat(green.floatValue / 255.0)
             let b = CGFloat(blue.floatValue / 255.0)
@@ -71,47 +71,48 @@ public extension UIColor {
     /// Returns RGB seperated by ";"
     public func colorString() -> String {
         
-        let numberOfComponents = CGColorGetNumberOfComponents(self.CGColor)
+        let numberOfComponents = self.cgColor.numberOfComponents
         var colorString = ""
         
         if (numberOfComponents == 2) {
-            let components = CGColorGetComponents(self.CGColor)
-            let compR = components[0]
-            _ = components[1]
+            if let components = self.cgColor.components {
+                let compR = components[0] 
             
-            colorString = NSString(format: "%li;%li;%li", Int(compR * 255.0), Int(compR * 255.0), Int(compR * 255.0)) as String
+                colorString = NSString(format: "%li;%li;%li", Int(compR * 255.0), Int(compR * 255.0), Int(compR * 255.0)) as String
+            }
         }
         if (numberOfComponents > 3) {
-            let components = CGColorGetComponents(self.CGColor)
-            let compR = components[0]
-            let compG = components[1]
-            let compB = components[2]
+            if let components = self.cgColor.components {
+                let compR = components[0]
+                let compG = components[1]
+                let compB = components[2]
             //            let compA = components[3]
             
-            colorString = NSString(format: "%li;%li;%li", Int(compR * 255.0), Int(compG * 255.0), Int(compB * 255.0)) as String
+                colorString = NSString(format: "%li;%li;%li", Int(compR * 255.0), Int(compG * 255.0), Int(compB * 255.0)) as String
+            }
         }
         return colorString
     }
     
-    public static func colorWithHexString (hex: String) -> UIColor {
-        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+    public static func colorWithHexString (_ hex: String) -> UIColor {
+        var cString:String = (hex as NSString).trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = (cString as NSString).substringFromIndex(1)
+            cString = (cString as NSString).substring(from: 1)
         }
         
         if ((cString as NSString).length != 6) {
-            return UIColor.grayColor()
+            return UIColor.gray
         }
         
-        let rString = (cString as NSString).substringToIndex(2)
-        let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
-        let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+        let rString = (cString as NSString).substring(to: 2)
+        let gString = ((cString as NSString).substring(from: 2) as NSString).substring(to: 2)
+        let bString = ((cString as NSString).substring(from: 4) as NSString).substring(to: 2)
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-        NSScanner(string: rString).scanHexInt(&r)
-        NSScanner(string: gString).scanHexInt(&g)
-        NSScanner(string: bString).scanHexInt(&b)
+        Scanner(string: rString).scanHexInt32(&r)
+        Scanner(string: gString).scanHexInt32(&g)
+        Scanner(string: bString).scanHexInt32(&b)
         
         return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
     }
@@ -120,8 +121,8 @@ public extension UIColor {
         
         var hexString = "#000000"
         
-        let numberOfComponents = CGColorGetNumberOfComponents(self.CGColor)
-        let components =  CGColorGetComponents(self.CGColor)
+        let numberOfComponents = self.cgColor.numberOfComponents
+        let components = self.cgColor.components!
         if numberOfComponents >= 3 {
             let r = components[0]
             let g = components[1]
@@ -131,16 +132,7 @@ public extension UIColor {
         }
         return hexString as String
     }
-    /*
-     - (NSString *)hexStringForColor:(UIColor *)color {
-     const CGFloat *components = CGColorGetComponents(color.CGColor);
-     CGFloat r = components[0];
-     CGFloat g = components[1];
-     CGFloat b = components[2];
-     NSString *hexString=[NSString stringWithFormat:@"%02X%02X%02X", (int)(r * 255), (int)(g * 255), (int)(b * 255)];
-     return hexString;
-     }
-     */
+
     
     public static func randomColor() -> UIColor {
         let red = CGFloat(Double(arc4random() % 256) / 256.0)
@@ -151,7 +143,7 @@ public extension UIColor {
     
     public func isLight() -> Bool
     {
-        let components = CGColorGetComponents(self.CGColor)
+        let components = self.cgColor.components!
         let brightness = ((components[0] * CGFloat(299.0)) + (components[1] * CGFloat(587.0)) + (components[2] * CGFloat(114.0))) / CGFloat(1000.0)
         
         if brightness < 0.5
@@ -166,7 +158,7 @@ public extension UIColor {
     
     public func isVeryLight() -> Bool
     {
-        let components = CGColorGetComponents(self.CGColor)
+        let components = self.cgColor.components!
         let brightness = ((components[0] * CGFloat(299)) + (components[1] * CGFloat(587)) + (components[2] * CGFloat(114))) / CGFloat(1000)
         
         if brightness < 0.85

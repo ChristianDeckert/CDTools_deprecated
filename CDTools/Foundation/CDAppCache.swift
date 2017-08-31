@@ -10,73 +10,73 @@ import Foundation
 
 // MARK: - CDAppCache: a simple singelton to cache and persist stuff 
 
-public typealias WatchAppCacheObserverCallback = (object: AnyObject?, key: String) -> Void
+public typealias WatchAppCacheObserverCallback = (_ object: AnyObject?, _ key: String) -> Void
 
 let _appCacheInstance = CDAppCache()
-public class CDAppCache {
+open class CDAppCache {
     
-    private var cache = Dictionary<String, AnyObject>()
-    public var suitName: String? = nil {
+    fileprivate var cache = Dictionary<String, AnyObject>()
+    open var suitName: String? = nil {
         didSet {
             if let suitName = self.suitName {
-                userDefaults = NSUserDefaults(suiteName: suitName)!
+                userDefaults = UserDefaults(suiteName: suitName)!
             } else {
-                userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults = UserDefaults.standard
             }
         }
     }
     
-    public var userDefaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    open var userDefaults: UserDefaults = UserDefaults.standard
     
-    public static func sharedCache() -> CDAppCache {
+    open static func sharedCache() -> CDAppCache {
         return _appCacheInstance
     }
     
-    public func clear() {
+    open func clear() {
         _appCacheInstance.clear()
     }
     
-    public func add(objectToCache object: AnyObject, forKey: String) -> Bool {
+    open func add(objectToCache object: AnyObject, forKey: String) -> Bool {
         cache[forKey] = object
         notifyObservers(forKey)
         return true
     }
     
-    public func objectForKey(key: String) -> AnyObject? {
+    open func objectForKey(_ key: String) -> AnyObject? {
         return cache[key]
     }
     
-    public func stringForKey(key: String) -> String? {
+    open func stringForKey(_ key: String) -> String? {
         return objectForKey(key) as? String
     }
     
-    public func integerForKey(key: String) -> Int? {
+    open func integerForKey(_ key: String) -> Int? {
         return objectForKey(key) as? Int
     }
     
-    public func doubleForKey(key: String) -> Double? {
+    open func doubleForKey(_ key: String) -> Double? {
         return objectForKey(key) as? Double
     }
     
-    public func dictionaryForKey(key: String) -> Dictionary<String, AnyObject>? {
+    open func dictionaryForKey(_ key: String) -> Dictionary<String, AnyObject>? {
         return objectForKey(key) as? Dictionary<String, AnyObject>
     }
     
-    public func remove(key: String) {
+    open func remove(_ key: String) {
         cache[key] = nil
         notifyObservers(key)
     }
     
     // MARK: - Oberserver
-    private var observers = Array<_WatchAppCacheObserver>()
+    fileprivate var observers = Array<_WatchAppCacheObserver>()
     
     // MARK: Private Helper Class _WatchAppCacheObserver
-    private class _WatchAppCacheObserver: NSObject {
+    fileprivate class _WatchAppCacheObserver: NSObject {
         weak var observer: NSObject?
         var keys = Array<String>()
         var callback: WatchAppCacheObserverCallback? = nil
         
-        func isObservingKey(key: String) -> Bool {
+        func isObservingKey(_ key: String) -> Bool {
             for k in keys {
                 if key == k {
                     return true
@@ -90,7 +90,7 @@ public class CDAppCache {
         }
     }
     
-    public func addObserver(observer: NSObject, forKeys keys: Array<String>, callback: WatchAppCacheObserverCallback) {
+    open func addObserver(_ observer: NSObject, forKeys keys: Array<String>, callback: @escaping WatchAppCacheObserverCallback) {
         let (internalObserverIndex, internalObserver) = findObserver(observer)
         
         let newObserver: _WatchAppCacheObserver
@@ -99,7 +99,7 @@ public class CDAppCache {
         } else {
             newObserver = _WatchAppCacheObserver(observer: observer)
         }
-        newObserver.keys.appendContentsOf(keys)
+        newObserver.keys.append(contentsOf: keys)
         newObserver.callback = callback
         
         if -1 == internalObserverIndex {
@@ -108,21 +108,21 @@ public class CDAppCache {
         }
     }
     
-    public func removeObserver(observer: NSObject) -> Bool {
+    open func removeObserver(_ observer: NSObject) -> Bool {
         
         let (internalObserverIndex, _) = findObserver(observer)
         
         if -1 != internalObserverIndex {
-            self.observers.removeAtIndex(internalObserverIndex)
+            self.observers.remove(at: internalObserverIndex)
             return true
         }
         return false
     }
     
-    private func findObserver(observer: NSObject) -> (Int, _WatchAppCacheObserver?) {
+    fileprivate func findObserver(_ observer: NSObject) -> (Int, _WatchAppCacheObserver?) {
         
-        for (index, o) in self.observers.enumerate() {
-            if let obs = o.observer where obs == observer {
+        for (index, o) in self.observers.enumerated() {
+            if let obs = o.observer, obs == observer {
                 return (index, o)
             }
         }
@@ -130,21 +130,21 @@ public class CDAppCache {
     }
     
     
-    private func notifyObservers(key: String) {
+    fileprivate func notifyObservers(_ key: String) {
         for internalObserver in self.observers {
             self.notifyObserver(internalObserver, key: key)
         }
     }
     
-    private func notifyObserver(observer: _WatchAppCacheObserver, keys: [String]) {
+    fileprivate func notifyObserver(_ observer: _WatchAppCacheObserver, keys: [String]) {
         for key in keys {
             self.notifyObserver(observer, key: key)
         }
     }
     
-    private func notifyObserver(observer: _WatchAppCacheObserver, key: String) {
+    fileprivate func notifyObserver(_ observer: _WatchAppCacheObserver, key: String) {
         if observer.isObservingKey(key) {
-            observer.callback?(object: self.objectForKey(key), key: key)
+            observer.callback?(self.objectForKey(key), key)
         }
     }
 }
@@ -154,15 +154,15 @@ public extension CDAppCache {
 
     
     public func persistObject(objectToPersist object: AnyObject, forKey key: String) {
-        userDefaults.setObject(object, forKey: key)
+        userDefaults.set(object, forKey: key)
         userDefaults.synchronize()
     }
     
     public func persistImage(imageToPersist image: UIImage, forKey: String) {
         
-        let persistBase64: NSData -> Void = { (imageData) in
-            let base64image = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions())
-            self.userDefaults.setObject(base64image, forKey: forKey)
+        let persistBase64: (Data) -> Void = { (imageData) in
+            let base64image = imageData.base64EncodedString(options: NSData.Base64EncodingOptions())
+            self.userDefaults.set(base64image, forKey: forKey)
             self.userDefaults.synchronize()
         }
         if let imageData = UIImagePNGRepresentation(image) {
@@ -172,23 +172,23 @@ public extension CDAppCache {
         }
     }
     
-    public func unpersistImage(forKey: String) {
+    public func unpersistImage(_ forKey: String) {
         self.removePersistedObject(forKey)
     }
     
-    public func removePersistedObject(forKey: String) {
-        userDefaults.removeObjectForKey(forKey)
+    public func removePersistedObject(_ forKey: String) {
+        userDefaults.removeObject(forKey: forKey)
         userDefaults.synchronize()
     }
     
-    public func persistedObject(forKey: String) -> AnyObject? {
-        return userDefaults.objectForKey(forKey)
+    public func persistedObject(_ forKey: String) -> AnyObject? {
+        return userDefaults.object(forKey: forKey) as AnyObject
     }
     
-    public func persistedImage(forKey: String) -> UIImage? {
+    public func persistedImage(_ forKey: String) -> UIImage? {
         
         if let base64string = persistedObject(forKey) as? String {
-            if let imageData = NSData.init(base64EncodedString: base64string, options: NSDataBase64DecodingOptions()) {
+            if let imageData = Data.init(base64Encoded: base64string, options: NSData.Base64DecodingOptions()) {
                 return UIImage(data: imageData)
             }
         }
@@ -196,7 +196,7 @@ public extension CDAppCache {
         return nil
     }
     
-    public func persistedInt(forKey: String) -> Int? {
+    public func persistedInt(_ forKey: String) -> Int? {
         return persistedObject(forKey) as? Int
     }
     

@@ -11,7 +11,7 @@ import UIKit
 
 public extension UIViewController {
     public class func storyboardIdentifier() -> String {
-        return String(NSStringFromClass(self.classForCoder()).componentsSeparatedByString(".")[1] ?? "Unexpected Error")
+        return String(NSStringFromClass(self.classForCoder()).components(separatedBy: ".")[1] )
     }
     
     static func newInstance(preferredStoryboard storyBoardName: String? = nil) -> UIViewController? {
@@ -22,13 +22,13 @@ public extension UIViewController {
         } else {
             storyboard = UIStoryboard.mainStoryboard()
         }
-        return storyboard.instantiateViewControllerWithIdentifier(self.storyboardIdentifier())
+        return storyboard.instantiateViewController(withIdentifier: self.storyboardIdentifier())
     }
 }
 
-public class CDBaseViewController: UIViewController {
+open class CDBaseViewController: UIViewController {
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         commonInit()
     }
@@ -37,11 +37,11 @@ public class CDBaseViewController: UIViewController {
         commonInit()
     }
     
-    public func commonInit() {
+    open func commonInit() {
         
     }
     
-    public func cd_addChildViewController(childController: UIViewController, frame: CGRect? = nil) -> Bool {
+    open func cd_addChildViewController(_ childController: UIViewController, frame: CGRect? = nil) -> Bool {
         for viewController in self.childViewControllers {
             if viewController == childController {
                 return false
@@ -49,19 +49,19 @@ public class CDBaseViewController: UIViewController {
         }
         let rect = frame ?? self.view.bounds
         childController.view.frame = rect
-        childController.willMoveToParentViewController(self)
+        childController.willMove(toParentViewController: self)
         self.addChildViewController(childController)
         self.view.addSubview(childController.view)
         
         
-        childController.didMoveToParentViewController(self)
+        childController.didMove(toParentViewController: self)
 
         return true
     }
 
     
-    public override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    open override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
 
 

@@ -9,17 +9,17 @@
 import Foundation
 
 
-public class CDFileManager {
+open class CDFileManager {
     
-    public class func getRootDirectory(subfolder: String?) -> String {
+    open class func getRootDirectory(_ subfolder: String?) -> String {
         
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.LibraryDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.libraryDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         
         if var documentsDirectory = paths.first {
             if let sub = subfolder {
-                documentsDirectory = documentsDirectory.nsString.stringByAppendingPathComponent(sub)
+                documentsDirectory = documentsDirectory.nsString.appendingPathComponent(sub)
                 do {
-                    try NSFileManager.defaultManager().createDirectoryAtPath(documentsDirectory, withIntermediateDirectories: true, attributes: nil)
+                    try FileManager.default.createDirectory(atPath: documentsDirectory, withIntermediateDirectories: true, attributes: nil)
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
@@ -33,14 +33,14 @@ public class CDFileManager {
         return ""
     }
     
-    public class func getDocumentsDirectory(subfolder: String?) -> String {
+    open class func getDocumentsDirectory(_ subfolder: String?) -> String {
         
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         
         if let documentsDirectory = paths.first {
             if let sub = subfolder {
                 do {
-                    try NSFileManager.defaultManager().createDirectoryAtPath(documentsDirectory.nsString.stringByAppendingPathComponent(sub), withIntermediateDirectories: true, attributes: nil)
+                    try FileManager.default.createDirectory(atPath: documentsDirectory.nsString.appendingPathComponent(sub), withIntermediateDirectories: true, attributes: nil)
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
@@ -53,15 +53,15 @@ public class CDFileManager {
         return ""
     }
     
-    public class func getCachesDirectory(subfolder: String?) -> String {
+    open class func getCachesDirectory(_ subfolder: String?) -> String {
         
-        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
         
         if var theDir = paths.first {
             if let sub = subfolder {
                 theDir = theDir.stringByAppendingPathComponent(sub)
                 do {
-                    try NSFileManager.defaultManager().createDirectoryAtPath(theDir, withIntermediateDirectories: true, attributes: nil)
+                    try FileManager.default.createDirectory(atPath: theDir, withIntermediateDirectories: true, attributes: nil)
                 } catch let error as NSError {
                     print(error.localizedDescription)
                 }
@@ -76,7 +76,7 @@ public class CDFileManager {
     
 
     
-    public class func pathForFile (fileName: String, optionalSubFolder subFolder: String?) -> String? {
+    open class func pathForFile (_ fileName: String, optionalSubFolder subFolder: String?) -> String? {
         var ret: String?
         
         ret = CDFileManager.getRootDirectory(subFolder)
@@ -88,19 +88,19 @@ public class CDFileManager {
         return ret
     }
     
-    public class func writeToFile(content: String, fileName name: String, optionalSubFolder subFolder: String?) -> Bool {
+    open class func writeToFile(_ content: String, fileName name: String, optionalSubFolder subFolder: String?) -> Bool {
         
         var path = CDFileManager.getRootDirectory(subFolder)
         path = path.stringByAppendingPathComponent(name)
         
         
-        let fileData = content.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let fileData = content.data(using: String.Encoding.utf8, allowLossyConversion: false)
         
         if let fd = fileData {
             var success = true
             
             do {
-                try fd.writeToFile(path, options: NSDataWritingOptions.AtomicWrite)
+                try fd.write(to: URL(fileURLWithPath: path), options: NSData.WritingOptions.atomicWrite)
                 
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -114,16 +114,16 @@ public class CDFileManager {
         return false
     }
     
-    public class func writeFileToPath(path: String, content: String) -> Bool {
+    open class func writeFileToPath(_ path: String, content: String) -> Bool {
         
         
-        let fileData = content.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        let fileData = content.data(using: String.Encoding.utf8, allowLossyConversion: false)
         
         if let fd = fileData {
             var success = true
             do {
                 try
-                    fd.writeToFile(path, options: NSDataWritingOptions.AtomicWrite)
+                    fd.write(to: URL(fileURLWithPath: path), options: NSData.WritingOptions.atomicWrite)
                 
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -136,27 +136,27 @@ public class CDFileManager {
         return false
     }
     
-    public class func deleteFile(path: String) -> Bool {
-        if nil == (try? NSFileManager.defaultManager().removeItemAtPath(path)) {
+    open class func deleteFile(_ path: String) -> Bool {
+        if nil == (try? FileManager.default.removeItem(atPath: path)) {
             return false
         }
         return true
     }
     
-    public class func contentsOfDirectory(path: String, filter: [String]?) -> [String]? {
+    open class func contentsOfDirectory(_ path: String, filter: [String]?) -> [String]? {
         
         if (path == "" || path.nsString.length == 0) {
             return nil
         }
         
-        if let contents = try? NSFileManager.defaultManager().contentsOfDirectoryAtPath(path) {
+        if let contents = try? FileManager.default.contentsOfDirectory(atPath: path) {
             if let fileFilter = filter {
                 var filteredContents = Array<String>()
                 for f: String in contents {
                     
                     var addFile = false
                     for string in fileFilter {
-                        if (f.rangeOfString(string, options: .CaseInsensitiveSearch) != nil) {
+                        if (f.range(of: string, options: .caseInsensitive) != nil) {
                             addFile = true
                             break;
                         }
@@ -176,7 +176,7 @@ public class CDFileManager {
         return nil
     }
     
-    public class func fileExists(path: String) -> Bool {
-        return NSFileManager.defaultManager().fileExistsAtPath(path)
+    open class func fileExists(_ path: String) -> Bool {
+        return FileManager.default.fileExists(atPath: path)
     }
 }
