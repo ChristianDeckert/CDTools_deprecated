@@ -11,14 +11,12 @@ import Foundation
 public extension Array {
     
     // Iterates over the whole array and finds the desired element by reference
-    public func indexOf(_ item: AnyObject?) -> Int? {
-        if let itemTmp: AnyObject = item {
-            for i in 0..<count {
-                if let itemTmp3: AnyObject = self[i] as AnyObject {
-                    if itemTmp3 === itemTmp {
-                        return i
-                    }
-                }
+    public func indexOf(item: Any) -> Int? {
+        
+        for i in 0..<count {
+            let currentItem = self[i] as AnyObject
+            if currentItem === item  as AnyObject{
+                return i
             }
         }
         

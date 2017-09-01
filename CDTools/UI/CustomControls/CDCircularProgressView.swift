@@ -175,8 +175,8 @@ open class CDCircularProgressView: UIView {
     
     fileprivate func pathForProgress(_ progress: Double) -> UIBezierPath {
         let r = self.radius()
-        let endAngle = CGFloat.pi * 2 * CGFloat(progress) - CGFloat(M_PI_2)
-        let progressPath = UIBezierPath(arcCenter: center, radius: r, startAngle: -CGFloat(M_PI_2), endAngle: endAngle, clockwise: true)
+        let endAngle = CGFloat.pi * 2 * CGFloat(progress) - (CGFloat.pi/2)
+        let progressPath = UIBezierPath(arcCenter: center, radius: r, startAngle: -(CGFloat.pi/2), endAngle: endAngle, clockwise: true)
         return progressPath
     }
 

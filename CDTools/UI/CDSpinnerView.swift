@@ -321,11 +321,11 @@ open class CDSpinnerView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     /// Present without source rect
-    open static func present(inViewController viewController: UIViewController, withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, willPresentClosure: ((CDSpinnerView) -> Void)? = nil, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
+    open static func present(inViewController viewController: UIViewController, withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, willPresentClosure: ((CDSpinnerView) -> Void)? = nil, completion: (() -> Void)? = nil) -> CDSpinnerView? {
         return CDSpinnerView.present(inViewController: viewController, withItems: items, callbackBlock: block, sourceRect: nil, willPresentClosure: willPresentClosure, completion: completion)
     }
     
-    open static func present(inViewController viewController: UIViewController, withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, sourceRect: CGRect?, willPresentClosure: ((CDSpinnerView) -> Void)? = nil, completion: ((Void) -> Void)? = nil) -> CDSpinnerView? {
+    open static func present(inViewController viewController: UIViewController, withItems items: [CDSpinnerViewItem], callbackBlock block: @escaping (CDSpinnerViewItem) -> Void, sourceRect: CGRect?, willPresentClosure: ((CDSpinnerView) -> Void)? = nil, completion: (() -> Void)? = nil) -> CDSpinnerView? {
         let bundle = Bundle(for: CDSpinnerView.classForCoder())
         if let spinnerView: CDSpinnerView = bundle.loadNibNamed("CDSpinnerView", owner: nil, options: nil)!.first as? CDSpinnerView {
             spinnerView.sourceRect = sourceRect

@@ -10,7 +10,7 @@ import UIKit
 
 public extension UICollectionViewCell {
     
-    open class var cellReuseIdentifier: String {
+    public class var cellReuseIdentifier: String {
         let id = String(NSStringFromClass(self.classForCoder()).components(separatedBy: ".")[1])
         return id!
     }
