@@ -8,13 +8,13 @@
 
 import UIKit
 
-public class CDViewModelBase: NSObject {
-
+open class CDViewModelBase: NSObject {
+    
     public required override init() {
         super.init()
     }
     
-    public func duplicate() -> Self {
+    open func duplicate() -> Self {
         let copy = type(of: self).init()
         
         for child in Mirror(reflecting: self).children
@@ -32,6 +32,6 @@ public class CDViewModelBase: NSObject {
         
         return copy
     }
-
+    
     
 }
